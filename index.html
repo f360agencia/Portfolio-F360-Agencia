@@ -21,14 +21,14 @@
       overflow-x: hidden;
     }
 
-    /* HEADER AJUSTADA */
+    /* HEADER */
     header {
-      position: absolute; /* Não segue a rolagem */
+      position: absolute;
       top: 0;
       width: 100%;
       background: #ffffff;
       border-bottom: 3px solid #c60000;
-      padding: 10px 5%; /* Padding reduzido para ser menor */
+      padding: 10px 5%;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -36,7 +36,7 @@
     }
 
     .logo img {
-      height: 100px; /* Logo reduzida para uma header mais fina */
+      height: 80px; /* Ajustado para um equilíbrio visual */
       width: auto;
       display: block;
     }
@@ -60,9 +60,9 @@
       color: #c60000;
     }
 
-    /* SEÇÕES GERAIS */
+    /* SEÇÕES */
     section {
-      padding: 120px 5% 80px; /* Ajuste do padding superior já que a header é menor */
+      padding: 120px 5% 80px;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -82,7 +82,6 @@
       margin-bottom: 25px;
     }
 
-    /* CORES POR SEÇÃO */
     #historia { background-color: #ffffff; color: #111; }
     #historia h1 { color: #c60000; }
 
@@ -207,6 +206,7 @@
       <div class="card"><img src="https://imgur.com/qdnKCVw.png" alt="Job 7"></div>
       <div class="card"><img src="https://imgur.com/dA8hJhr.png" alt="Job 8"></div>
       <div class="card"><img src="https://imgur.com/rcJGAdB.png" alt="Job 9"></div>
+      <div class="card"><img src="https://imgur.com/nVq8vVR.png" alt="Job 10"></div>
     </div>
 
     <button class="arrow right" onclick="nextSlide()">›</button>
@@ -240,7 +240,9 @@
   }
 
   function nextSlide() {
-    if (index >= totalSlides - 1) {
+    // Agora reinicia ao chegar no índice 7 (imagem 8), 
+    // para que as últimas imagens (9 e 10) preencham a tela sem sobrar vazio.
+    if (index >= 7) { 
       index = 0;
     } else {
       index++;
@@ -250,7 +252,7 @@
 
   function prevSlide() {
     if (index <= 0) {
-      index = totalSlides - 1;
+      index = 7;
     } else {
       index--;
     }
@@ -273,5 +275,3 @@
 
 </body>
 </html>
-
-
