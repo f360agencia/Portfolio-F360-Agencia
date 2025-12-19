@@ -68,7 +68,7 @@
       z-index: 2;
     }
 
-    /* SEÇÃO HISTÓRIA - MANUTENÇÃO INTEGRAL */
+    /* SEÇÃO HISTÓRIA */
     #historia { 
       background-color: #0f0f0f;
       color: #ffffff; 
@@ -173,18 +173,14 @@
 
     @keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
-    /* CONTATO ATUALIZADO */
+    /* CONTATO */
     #contato { background-color: #000000; color: #ffffff; }
     #contato h1 { color: #c60000; }
     .contact-item { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; font-size: 18px; }
     .contact-item svg { width: 24px; height: 24px; fill: #c60000; }
-    
-    /* Estilo do link para mobile */
     .phone-link { color: #ffffff; text-decoration: none; transition: 0.3s; }
-    
     footer { margin-top: 80px; padding-top: 30px; border-top: 1px solid #333; color: #888; }
 
-    /* --- REGRAS APENAS PARA MOBILE --- */
     @media (max-width: 768px) {
       header { padding: 15px 5%; height: auto; }
       .logo img { height: 50px; }
@@ -193,21 +189,15 @@
       h1 { font-size: 32px; margin-bottom: 25px; }
       section { padding: 100px 8% 60px; }
       #historia p { font-size: 18px; line-height: 1.4; }
-      
       .scroll-row img { width: 300px; height: 200px; }
       .scroll-row { width: calc(315px * 20); }
       @keyframes scrollLeft { 100% { transform: translateX(calc(-315px * 10)); } }
-
       .card { min-width: 280px; height: 380px; }
       .slider-container { padding: 10px 0; }
       .arrow { width: 45px; height: 45px; font-size: 25px; }
-      
       .portfolio-grid { grid-template-columns: 1fr; margin-top: 30px; }
       .portfolio-grid .card { height: 300px; }
-      
       .whatsapp-btn { width: 50px; height: 50px; bottom: 20px; right: 20px; }
-
-      /* Ajuste solicitado: Link do número em cinza no mobile */
       .phone-link { color: #888888; }
     }
   </style>
@@ -292,6 +282,10 @@
       <div class="card"><img src="https://imgur.com/KM27uUk.png" alt="Mockups Interativos"></div>
       <div class="card"><img src="https://imgur.com/KriwRPM.png" alt="Campanhas Digitais"></div>
       <div class="card"><img src="https://imgur.com/OZRDQRN.png" alt="Flyers"></div>
+      <div class="card"><img src="https://imgur.com/dWKBXKy.png" alt="Produção F360 1"></div>
+      <div class="card"><img src="https://imgur.com/qdnKCVw.png" alt="Produção F360 2"></div>
+      <div class="card"><img src="https://imgur.com/dA8hJhr.png" alt="Produção F360 3"></div>
+      <div class="card"><img src="https://imgur.com/rcJGAdB.png" alt="Produção F360 4"></div>
     </div>
     <button class="arrow right" onclick="nextSlide()">›</button>
   </div>
@@ -302,6 +296,12 @@
     <div class="card"><img src="https://imgur.com/uYUjTzb.png" alt="Interface Web"></div>
     <div class="card"><img src="https://imgur.com/KM27uUk.png" alt="Mockups"></div>
     <div class="card"><img src="https://imgur.com/nVq8vVR.png" alt="Efeitos Especiais"></div>
+    <div class="card"><img src="https://imgur.com/KriwRPM.png" alt="Campanha Digital"></div>
+    <div class="card"><img src="https://imgur.com/OZRDQRN.png" alt="Flyer Design"></div>
+    <div class="card"><img src="https://imgur.com/dWKBXKy.png" alt="Arte F360 A"></div>
+    <div class="card"><img src="https://imgur.com/qdnKCVw.png" alt="Arte F360 B"></div>
+    <div class="card"><img src="https://imgur.com/dA8hJhr.png" alt="Arte F360 C"></div>
+    <div class="card"><img src="https://imgur.com/rcJGAdB.png" alt="Arte F360 D"></div>
   </div>
 </section>
 
@@ -313,17 +313,14 @@
 
 <section id="contato">
   <h1>Contato</h1>
-  
   <div class="contact-item">
     <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
     <span><strong>Email:</strong> felipeszoke@f360agencia.com.br</span>
   </div>
-
   <div class="contact-item">
     <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.81 9.81 0 0 0 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.39-4.19-1.15l-.3-.17-3.12.82.83-3.04-.2-.32a8.188 8.188 0 0 1-1.26-4.38c.01-4.54 3.7-8.24 8.25-8.24zM8.53 7.33c-.16 0-.43.06-.66.31-.22.25-.87.86-.87 2.07 0 1.22.89 2.39 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.23-.16-.48-.28-.25-.13-1.47-.73-1.7-.81-.23-.08-.39-.12-.56.13-.17.25-.64.81-.78.98-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.74-.66-1.24-1.48-1.39-1.73-.14-.25-.01-.39.11-.51.12-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.85-.2-.48-.4-.41-.56-.41z"/></svg>
     <span><strong>WhatsApp:</strong> <a href="https://wa.me/5511989582222" class="phone-link">(11) 98958-2222</a></span>
   </div>
-
   <footer>
     <p>CNPJ: 63.805.706/0001-40</p>
     <p>&copy; 2024 F360. Todos os direitos reservados.</p>
