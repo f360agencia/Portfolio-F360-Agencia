@@ -25,8 +25,8 @@
       top: 0;
       width: 100%;
       background: #ffffff;
-      border-bottom: 2px solid #c60000;
-      padding: 16px 8%;
+      border-bottom: 3px solid #c60000;
+      padding: 18px 8%;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -34,14 +34,15 @@
     }
 
     .logo {
-      font-size: 22px;
+      font-size: 24px;
       font-weight: bold;
       color: #c60000;
+      letter-spacing: 1px;
     }
 
     nav {
       display: flex;
-      gap: 24px;
+      gap: 28px;
     }
 
     nav a {
@@ -49,22 +50,24 @@
       color: #111;
       font-size: 14px;
       font-weight: bold;
+      text-transform: uppercase;
     }
 
     /* SEÇÕES */
     section {
-      padding: 120px 8% 100px;
+      padding: 130px 8% 100px;
       min-height: 100vh;
     }
 
     h1 {
-      margin-bottom: 20px;
+      margin-bottom: 24px;
       color: #c60000;
+      font-size: 32px;
     }
 
     p {
-      max-width: 700px;
-      line-height: 1.6;
+      max-width: 720px;
+      line-height: 1.7;
       font-size: 16px;
     }
 
@@ -75,27 +78,27 @@
 
     /* PORTFÓLIO */
     #portfolio {
-      background: #f7f7f7;
+      background: #f5f5f5;
     }
 
     .slider-container {
       position: relative;
-      margin-top: 40px;
+      margin-top: 50px;
       overflow: hidden;
     }
 
     .slider-track {
       display: flex;
       gap: 24px;
-      transition: transform 0.5s ease;
+      transition: transform 0.6s ease;
     }
 
     .card {
-      min-width: 280px;
+      min-width: 300px;
       background: #ffffff;
-      border-radius: 10px;
+      border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
     }
 
     .card img {
@@ -104,27 +107,6 @@
     }
 
     /* BOTÕES */
-    .controls {
-      margin-top: 20px;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-    }
-
-    .btn {
-      background: #c60000;
-      color: #ffffff;
-      border: none;
-      padding: 10px 16px;
-      font-size: 16px;
-      cursor: pointer;
-      border-radius: 6px;
-    }
-
-    .btn:hover {
-      opacity: 0.85;
-    }
-
     .arrow {
       position: absolute;
       top: 50%;
@@ -132,10 +114,11 @@
       background: #c60000;
       color: #ffffff;
       border: none;
-      font-size: 24px;
-      padding: 10px 14px;
+      font-size: 26px;
+      padding: 10px 16px;
       cursor: pointer;
       border-radius: 50%;
+      z-index: 10;
     }
 
     .arrow.left {
@@ -144,6 +127,22 @@
 
     .arrow.right {
       right: 10px;
+    }
+
+    .controls {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .btn {
+      background: #c60000;
+      color: #ffffff;
+      border: none;
+      padding: 12px 22px;
+      font-size: 15px;
+      cursor: pointer;
+      border-radius: 8px;
     }
 
     /* CONTATO */
@@ -173,8 +172,9 @@
 <section id="historia">
   <h1>Minha história</h1>
   <p>
-    Atuo há mais de 8 anos com gerenciamento de redes sociais, criando estratégias,
-    conteúdos visuais e narrativas que fortalecem marcas e geram conexão real com o público.
+    Há mais de 8 anos atuo com gerenciamento de redes sociais, desenvolvendo
+    estratégias de conteúdo, identidade visual e posicionamento digital para
+    marcas que buscam relevância e conexão real com seu público.
   </p>
 </section>
 
@@ -185,15 +185,13 @@
     <button class="arrow left" onclick="prevSlide()">‹</button>
 
     <div class="slider-track" id="slider">
-      <div class="card"><img src="imagens/img1.jpg"></div>
-      <div class="card"><img src="imagens/img2.jpg"></div>
-      <div class="card"><img src="imagens/img3.jpg"></div>
-      <div class="card"><img src="imagens/img4.jpg"></div>
-      <div class="card"><img src="imagens/img5.jpg"></div>
-      <div class="card"><img src="imagens/img6.jpg"></div>
-      <div class="card"><img src="imagens/img7.jpg"></div>
-      <div class="card"><img src="imagens/img8.jpg"></div>
-      <div class="card"><img src="imagens/img9.jpg"></div>
+      <div class="card"><img src="imagens/img1.png" alt=""></div>
+      <div class="card"><img src="imagens/img2.png" alt=""></div>
+      <div class="card"><img src="imagens/img3.png" alt=""></div>
+      <div class="card"><img src="imagens/img4.png" alt=""></div>
+      <div class="card"><img src="imagens/img5.png" alt=""></div>
+      <div class="card"><img src="imagens/img6.png" alt=""></div>
+      <div class="card"><img src="imagens/img7.png" alt=""></div>
     </div>
 
     <button class="arrow right" onclick="nextSlide()">›</button>
@@ -218,9 +216,10 @@
   const slider = document.getElementById('slider');
   let index = 0;
   let auto = true;
+  const slideWidth = 324;
 
   function updateSlide() {
-    slider.style.transform = `translateX(-${index * 304}px)`;
+    slider.style.transform = `translateX(-${index * slideWidth}px)`;
   }
 
   function nextSlide() {
@@ -248,7 +247,7 @@
     auto = !auto;
   }
 
-  setInterval(autoSlide, 3000);
+  setInterval(autoSlide, 3500);
 </script>
 
 </body>
