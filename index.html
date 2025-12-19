@@ -36,7 +36,7 @@
     }
 
     .logo img {
-      height: 80px; /* Ajustado para um equilíbrio visual */
+      height: 80px;
       width: auto;
       display: block;
     }
@@ -56,9 +56,7 @@
       transition: color 0.3s;
     }
 
-    nav a:hover {
-      color: #c60000;
-    }
+    nav a:hover { color: #c60000; }
 
     /* SEÇÕES */
     section {
@@ -74,12 +72,6 @@
       font-size: 48px;
       text-transform: uppercase;
       font-weight: 900;
-    }
-
-    p {
-      max-width: 800px;
-      font-size: 20px;
-      margin-bottom: 25px;
     }
 
     #historia { background-color: #ffffff; color: #111; }
@@ -118,7 +110,11 @@
       border-radius: 4px;
       overflow: hidden;
       box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+      cursor: pointer;
+      transition: transform 0.3s ease;
     }
+
+    .card:hover { transform: scale(1.02); }
 
     .card img {
       width: 100%;
@@ -144,25 +140,69 @@
       align-items: center;
       justify-content: center;
       box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-      transition: all 0.3s;
     }
 
     .arrow.left { left: 20px; }
     .arrow.right { right: 20px; }
 
-    footer {
-      margin-top: 80px;
-      padding-top: 30px;
-      border-top: 1px solid #333;
-      font-size: 14px;
-      color: #888;
+    /* MODAL / LIGHTBOX */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(5px);
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .modal-content {
+      max-width: 90%;
+      max-height: 80vh;
+      border: 3px solid #c60000;
+      border-radius: 8px;
+      box-shadow: 0 0 30px rgba(198, 0, 0, 0.3);
+      animation: zoomIn 0.4s ease;
+    }
+
+    #caption {
+      color: #fff;
+      margin-top: 20px;
+      font-size: 24px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-align: center;
+    }
+
+    .close {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      color: #fff;
+      font-size: 50px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .close:hover { color: #c60000; }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
     }
 
     @media (max-width: 768px) {
       .logo img { height: 50px; }
-      nav { gap: 15px; }
-      h1 { font-size: 34px; }
       .card { min-width: 280px; height: 380px; }
+      h1 { font-size: 34px; }
     }
   </style>
 </head>
@@ -173,7 +213,6 @@
   <div class="logo">
     <img src="https://imgur.com/hyer8Fw.png" alt="F360 Logo">
   </div>
-
   <nav>
     <a href="#historia">Minha história</a>
     <a href="#portfolio">Portfólio</a>
@@ -183,43 +222,40 @@
 
 <section id="historia">
   <h1>Minha história</h1>
-  <p>
-    Mais de 8 anos de experiência com a gestão de redes sociais e comunidade, desde o manejo de interações, 
-    reports e métricas de engajamento à criação de conteúdo digital, insights estratégico e gestão de crises.
-  <p>
-    Hoje trabalho principalmente com o Photoshop, criando ilustrações avançadas e montagens especializadas para
-    redes sociais.
-  </p>
+  <p>Mais de 8 anos de experiência com a gestão de redes sociais e comunidade...</p>
+  <p>Hoje trabalho principalmente com o Photoshop, criando ilustrações avançadas...</p>
 </section>
 
 <section id="portfolio">
   <h1>Portfólio</h1>
-
   <div class="slider-container">
     <button class="arrow left" onclick="prevSlide()">‹</button>
-
     <div class="slider-track" id="slider">
-      <div class="card"><img src="https://imgur.com/ovzQOFI.png" alt="Job 1"></div>
-      <div class="card"><img src="https://imgur.com/uYUjTzb.png" alt="Job 2"></div>
-      <div class="card"><img src="https://imgur.com/KM27uUk.png" alt="Job 3"></div>
-      <div class="card"><img src="https://imgur.com/KriwRPM.png" alt="Job 4"></div>
-      <div class="card"><img src="https://imgur.com/OZRDQRN.png" alt="Job 5"></div>
-      <div class="card"><img src="https://imgur.com/dWKBXKy.png" alt="Job 6"></div>
-      <div class="card"><img src="https://imgur.com/qdnKCVw.png" alt="Job 7"></div>
-      <div class="card"><img src="https://imgur.com/dA8hJhr.png" alt="Job 8"></div>
-      <div class="card"><img src="https://imgur.com/rcJGAdB.png" alt="Job 9"></div>
-      <div class="card"><img src="https://imgur.com/nVq8vVR.png" alt="Job 10"></div>
+      <div class="card"><img src="https://imgur.com/ovzQOFI.png" alt="Criação Visual 01"></div>
+      <div class="card"><img src="https://imgur.com/uYUjTzb.png" alt="Social Media Branding"></div>
+      <div class="card"><img src="https://imgur.com/KM27uUk.png" alt="Campanha Digital Especial"></div>
+      <div class="card"><img src="https://imgur.com/KriwRPM.png" alt="Design de Interface"></div>
+      <div class="card"><img src="https://imgur.com/OZRDQRN.png" alt="Estratégia de Conteúdo"></div>
+      <div class="card"><img src="https://imgur.com/dWKBXKy.png" alt="Gestão de Comunidade"></div>
+      <div class="card"><img src="https://imgur.com/qdnKCVw.png" alt="Identidade Visual"></div>
+      <div class="card"><img src="https://imgur.com/dA8hJhr.png" alt="Motion Design"></div>
+      <div class="card"><img src="https://imgur.com/rcJGAdB.png" alt="Arte para Publicidade"></div>
+      <div class="card"><img src="https://imgur.com/nVq8vVR.png" alt="Portfolio Highlight"></div>
     </div>
-
     <button class="arrow right" onclick="nextSlide()">›</button>
   </div>
 </section>
+
+<div id="imageModal" class="modal">
+  <span class="close" onclick="closeModal()">&times;</span>
+  <img class="modal-content" id="imgExpanded">
+  <div id="caption"></div>
+</div>
 
 <section id="contato">
   <h1>Contato</h1>
   <p><strong>Email:</strong> contato@f360.com.br</p>
   <p><strong>WhatsApp:</strong> (00) 00000-0000</p>
-
   <footer>
     <p>CNPJ: 00.000.000/0001-00</p>
     <p>&copy; 2024 F360. Todos os direitos reservados.</p>
@@ -227,56 +263,60 @@
 </section>
 
 <script>
+  /* --- Lógica do Slider --- */
   const slider = document.getElementById('slider');
   let index = 0;
   const cards = document.querySelectorAll('.card');
   const totalSlides = cards.length;
   
-  function getSlideWidth() {
-    return cards[0].offsetWidth + 15; 
-  }
-
-  function updateSlide() {
-    const width = getSlideWidth();
-    slider.style.transform = `translateX(-${index * width}px)`;
-  }
+  function getSlideWidth() { return cards[0].offsetWidth + 15; }
+  function updateSlide() { slider.style.transform = `translateX(-${index * getSlideWidth()}px)`; }
 
   function nextSlide() {
-    // Agora reinicia ao chegar no índice 7 (imagem 8), 
-    // para que as últimas imagens (9 e 10) preencham a tela sem sobrar vazio.
-    if (index >= 7) { 
-      index = 0;
-    } else {
-      index++;
-    }
+    index >= 7 ? index = 0 : index++;
     updateSlide();
   }
 
   function prevSlide() {
-    if (index <= 0) {
-      index = 7;
-    } else {
-      index--;
-    }
+    index <= 0 ? index = 7 : index--;
     updateSlide();
   }
 
   let autoRun = setInterval(nextSlide, 4000);
-
   function resetTimer() {
     clearInterval(autoRun);
     autoRun = setInterval(nextSlide, 4000);
   }
 
-  document.querySelectorAll('.arrow').forEach(btn => {
-    btn.addEventListener('click', resetTimer);
+  document.querySelectorAll('.arrow').forEach(btn => btn.addEventListener('click', resetTimer));
+  window.addEventListener('resize', updateSlide);
+
+  /* --- Lógica do Modal (Zoom e Legenda) --- */
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("imgExpanded");
+  const captionText = document.getElementById("caption");
+
+  // Adiciona evento de clique em todos os cards
+  cards.forEach(card => {
+    card.addEventListener('click', function() {
+      const img = this.querySelector('img');
+      modal.style.display = "flex";
+      modalImg.src = img.src;
+      captionText.innerHTML = img.alt; // Pega a legenda do atributo 'alt'
+      clearInterval(autoRun); // Pausa o slider enquanto vê a foto
+    });
   });
 
-  window.addEventListener('resize', updateSlide);
+  function closeModal() {
+    modal.style.display = "none";
+    autoRun = setInterval(nextSlide, 4000); // Retoma o slider
+  }
+
+  // Fecha o modal se clicar fora da imagem
+  window.onclick = function(event) {
+    if (event.target == modal) closeModal();
+  }
 </script>
 
 </body>
 </html>
-
-
-
