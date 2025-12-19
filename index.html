@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Portfólio • Social Media</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: #f5f7f8;
+      color: #0f2f2c;
+      scroll-behavior: smooth;
+    }
+
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #0fa6a0;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 14px 0;
+      z-index: 1000;
+    }
+
+    header a {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      transition: opacity 0.2s;
+    }
+
+    header a:hover {
+      opacity: 0.8;
+    }
+
+    header span {
+      font-size: 12px;
+    }
+
+    section {
+      padding: 120px 8% 100px;
+      min-height: 100vh;
+    }
+
+    h1, h2 {
+      margin-bottom: 24px;
+    }
+
+    p {
+      max-width: 700px;
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    /* HISTÓRIA */
+    #historia {
+      background: linear-gradient(135deg, #0fa6a0, #0b7f7a);
+      color: #ffffff;
+    }
+
+    #historia h1 {
+      font-size: 36px;
+    }
+
+    /* PORTFÓLIO */
+    #portfolio {
+      background-color: #ffffff;
+      overflow: hidden;
+    }
+
+    .slider {
+      margin-top: 40px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .slider-track {
+      display: flex;
+      width: calc(300px * 10);
+      animation: scroll 40s linear infinite;
+    }
+
+    .card {
+      width: 300px;
+      margin-right: 24px;
+      background: #e6f4f3;
+      border-radius: 12px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* CONTATO */
+    #contato {
+      background-color: #0f2f2c;
+      color: #ffffff;
+    }
+
+    .contato-box {
+      max-width: 600px;
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 13px;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a href="#historia">🔝<span>Minha história</span></a>
+    <a href="#portfolio">🖼️<span>Portfólio</span></a>
+    <a href="#contato">✉️<span>Contato</span></a>
+  </header>
+
+  <!-- HISTÓRIA -->
+  <section id="historia">
+    <h1>Minha história</h1>
+    <p>
+      Trabalho há mais de 8 anos com gerenciamento de redes sociais, criando
+      conteúdos estratégicos, visuais e narrativas que fortalecem marcas e
+      conectam pessoas de forma autêntica.
+    </p>
+  </section>
+
+  <!-- PORTFÓLIO -->
+  <section id="portfolio">
+    <h2>Portfólio</h2>
+    <p>Alguns exemplos de posts, ilustrações e peças gráficas.</p>
+
+    <div class="slider">
+      <div class="slider-track">
+
+        <!-- IMAGENS (repita a sequência para efeito infinito) -->
+        <div class="card"><img src="imagens/post1.jpg" alt=""></div>
+        <div class="card"><img src="imagens/post2.jpg" alt=""></div>
+        <div class="card"><img src="imagens/post3.jpg" alt=""></div>
+        <div class="card"><img src="imagens/post4.jpg" alt=""></div>
+        <div class="card"><img src="imagens/post5.jpg" alt=""></div>
+
+        <!-- REPETIÇÃO -->
+        <div class="card"><img src="imagens/post1.jpg" alt=""></div>
+        <div class="card"><img src="imagens/post2.jpg" alt=""></div>
+        <div class="card"><img src="imagens/post3.jpg" alt=""></div>
+        <div class="card"><img src="imagens/post4.jpg" alt=""></div>
+        <div class="card"><img src="imagens/post5.jpg" alt=""></div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato">
+    <h2>Contato</h2>
+
+    <div class="contato-box">
+      <p>Email: contato@seudominio.com</p>
+      <p>WhatsApp: (00) 00000-0000</p>
+      <p>Instagram: @seuinstagram</p>
+
+      <footer>
+        <p>CNPJ: 00.000.000/0001-00</p>
+      </footer>
+    </div>
+  </section>
+
+</body>
+</html>
