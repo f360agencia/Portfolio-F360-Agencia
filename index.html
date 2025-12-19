@@ -21,7 +21,6 @@
       overflow-x: hidden;
     }
 
-    /* HEADER ORIGINAL */
     header {
       position: absolute;
       top: 0;
@@ -49,7 +48,6 @@
     }
     nav a:hover { color: #c60000; }
 
-    /* SEÇÕES GERAIS */
     section {
       padding: 140px 5% 80px;
       min-height: 100vh;
@@ -68,7 +66,6 @@
       z-index: 2;
     }
 
-    /* SEÇÃO HISTÓRIA */
     #historia { 
       background-color: #0f0f0f;
       color: #ffffff; 
@@ -122,8 +119,8 @@
       font-weight: 400;
     }
 
-    /* SEÇÃO PORTFÓLIO */
     #portfolio { background-color: #c60000; color: #ffffff; padding-left: 2%; padding-right: 2%; }
+    
     .portfolio-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -131,9 +128,10 @@
     }
     .portfolio-grid .card { min-width: unset; height: 400px; }
 
-    /* SLIDER */
+    /* SLIDER INFINITO */
     .slider-container { position: relative; width: 100%; overflow: hidden; padding: 30px 0; z-index: 2; }
     .slider-track { display: flex; gap: 15px; transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
+    
     .card {
       min-width: 350px; height: 450px; background: #000; border-radius: 4px;
       overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.4); cursor: pointer; transition: transform 0.3s ease;
@@ -150,7 +148,6 @@
     .arrow.left { left: 20px; }
     .arrow.right { right: 20px; }
 
-    /* WHATSAPP FLUTUANTE */
     .whatsapp-btn {
       position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
       background-color: #25d366; color: white; border-radius: 50%;
@@ -161,7 +158,6 @@
     .whatsapp-btn:hover { transform: scale(1.1); }
     .whatsapp-btn svg { width: 35px; height: 35px; fill: white; }
 
-    /* MODAL */
     .modal {
       display: none; position: fixed; z-index: 3000; top: 0; left: 0; width: 100%; height: 100%;
       background-color: rgba(0, 0, 0, 0.95); backdrop-filter: blur(8px);
@@ -173,7 +169,6 @@
 
     @keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
-    /* CONTATO */
     #contato { background-color: #000000; color: #ffffff; }
     #contato h1 { color: #c60000; }
     .contact-item { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; font-size: 18px; }
@@ -198,7 +193,6 @@
       .portfolio-grid { grid-template-columns: 1fr; margin-top: 30px; }
       .portfolio-grid .card { height: 300px; }
       .whatsapp-btn { width: 50px; height: 50px; bottom: 20px; right: 20px; }
-      .phone-link { color: #888888; }
     }
   </style>
 </head>
@@ -229,46 +223,19 @@
       <img src="https://imgur.com/qdnKCVw.png"> <img src="https://imgur.com/dA8hJhr.png">
       <img src="https://imgur.com/rcJGAdB.png"> <img src="https://imgur.com/nVq8vVR.png">
       <img src="https://imgur.com/ovzQOFI.png"> <img src="https://imgur.com/uYUjTzb.png">
-      <img src="https://imgur.com/KM27uUk.png"> <img src="https://imgur.com/KriwRPM.png">
-      <img src="https://imgur.com/OZRDQRN.png"> <img src="https://imgur.com/dWKBXKy.png">
-      <img src="https://imgur.com/qdnKCVw.png"> <img src="https://imgur.com/dA8hJhr.png">
-      <img src="https://imgur.com/rcJGAdB.png"> <img src="https://imgur.com/nVq8vVR.png">
     </div>
     <div class="scroll-row reverse">
       <img src="https://imgur.com/OZRDQRN.png"> <img src="https://imgur.com/dWKBXKy.png">
       <img src="https://imgur.com/qdnKCVw.png"> <img src="https://imgur.com/dA8hJhr.png">
       <img src="https://imgur.com/rcJGAdB.png"> <img src="https://imgur.com/nVq8vVR.png">
       <img src="https://imgur.com/ovzQOFI.png"> <img src="https://imgur.com/uYUjTzb.png">
-      <img src="https://imgur.com/KM27uUk.png"> <img src="https://imgur.com/KriwRPM.png">
-      <img src="https://imgur.com/OZRDQRN.png"> <img src="https://imgur.com/dWKBXKy.png">
-      <img src="https://imgur.com/qdnKCVw.png"> <img src="https://imgur.com/dA8hJhr.png">
-      <img src="https://imgur.com/rcJGAdB.png"> <img src="https://imgur.com/nVq8vVR.png">
-      <img src="https://imgur.com/ovzQOFI.png"> <img src="https://imgur.com/uYUjTzb.png">
-      <img src="https://imgur.com/KM27uUk.png"> <img src="https://imgur.com/KriwRPM.png">
-    </div>
-    <div class="scroll-row">
-      <img src="https://imgur.com/qdnKCVw.png"> <img src="https://imgur.com/rcJGAdB.png">
-      <img src="https://imgur.com/ovzQOFI.png"> <img src="https://imgur.com/KM27uUk.png">
-      <img src="https://imgur.com/OZRDQRN.png"> <img src="https://imgur.com/nVq8vVR.png">
-      <img src="https://imgur.com/dA8hJhr.png"> <img src="https://imgur.com/uYUjTzb.png">
-      <img src="https://imgur.com/dWKBXKy.png"> <img src="https://imgur.com/KriwRPM.png">
-      <img src="https://imgur.com/qdnKCVw.png"> <img src="https://imgur.com/rcJGAdB.png">
-      <img src="https://imgur.com/ovzQOFI.png"> <img src="https://imgur.com/KM27uUk.png">
-      <img src="https://imgur.com/OZRDQRN.png"> <img src="https://imgur.com/nVq8vVR.png">
-      <img src="https://imgur.com/dA8hJhr.png"> <img src="https://imgur.com/uYUjTzb.png">
-      <img src="https://imgur.com/dWKBXKy.png"> <img src="https://imgur.com/KriwRPM.png">
     </div>
   </div>
 
   <div class="content">
     <h1>Minha história</h1>
-    <p>
-      Mais de 8 anos de experiência com a gestão de redes sociais e comunidade, desde o manejo de interações, 
-      reports e métricas de engajamento à criação de conteúdo digital, insights estratégico e gestão de crises.
-    </p>
-    <p>
-      Hoje trabalho principalmente com o Photoshop, criando ilustrações avançadas e montagens especializadas para redes sociais.
-    </p>
+    <p>Mais de 8 anos de experiência com a gestão de redes sociais e comunidade, insights estratégicos e gestão de crises.</p>
+    <p>Hoje trabalho principalmente com o Photoshop, criando ilustrações avançadas e montagens especializadas.</p>
   </div>
 </section>
 
@@ -278,7 +245,7 @@
     <button class="arrow left" onclick="prevSlide()">‹</button>
     <div class="slider-track" id="slider">
       <div class="card"><img src="https://imgur.com/ovzQOFI.png" alt="Jornais e Posts Informativos"></div>
-      <div class="card"><img src="https://imgur.com/uYUjTzb.png" alt="Desenvolvimento de sites e Branding"></div>
+      <div class="card"><img src="https://imgur.com/uYUjTzb.png" alt="Sites e Branding"></div>
       <div class="card"><img src="https://imgur.com/KM27uUk.png" alt="Mockups Interativos"></div>
       <div class="card"><img src="https://imgur.com/KriwRPM.png" alt="Campanhas Digitais"></div>
       <div class="card"><img src="https://imgur.com/OZRDQRN.png" alt="Flyers"></div>
@@ -287,12 +254,17 @@
       <div class="card"><img src="https://imgur.com/dA8hJhr.png" alt="Produção F360 3"></div>
       <div class="card"><img src="https://imgur.com/rcJGAdB.png" alt="Produção F360 4"></div>
       <div class="card"><img src="https://imgur.com/nVq8vVR.png" alt="Efeitos Especiais"></div>
+      <div class="card"><img src="https://imgur.com/pGQ8NkF.png" alt="Social Media Style"></div>
+      <div class="card"><img src="https://imgur.com/xAfbXaY.png" alt="Design Premium"></div>
+      <div class="card"><img src="https://imgur.com/swQdgcT.png" alt="Composição Visual"></div>
+      <div class="card"><img src="https://imgur.com/aKkPbqo.png" alt="Branding Concept"></div>
+      <div class="card"><img src="https://imgur.com/qT1SrVg.png" alt="Digital Art"></div>
     </div>
     <button class="arrow right" onclick="nextSlide()">›</button>
   </div>
 
   <h1 style="margin-top: 80px;">Galeria Completa</h1>
-  <div class="portfolio-grid">
+  <div class="portfolio-grid" id="full-gallery">
     <div class="card"><img src="https://imgur.com/ovzQOFI.png" alt="Design Editorial"></div>
     <div class="card"><img src="https://imgur.com/uYUjTzb.png" alt="Interface Web"></div>
     <div class="card"><img src="https://imgur.com/KM27uUk.png" alt="Mockups"></div>
@@ -303,6 +275,11 @@
     <div class="card"><img src="https://imgur.com/qdnKCVw.png" alt="Arte F360 B"></div>
     <div class="card"><img src="https://imgur.com/dA8hJhr.png" alt="Arte F360 C"></div>
     <div class="card"><img src="https://imgur.com/rcJGAdB.png" alt="Arte F360 D"></div>
+    <div class="card"><img src="https://imgur.com/pGQ8NkF.png" alt="Arte F360 E"></div>
+    <div class="card"><img src="https://imgur.com/xAfbXaY.png" alt="Arte F360 F"></div>
+    <div class="card"><img src="https://imgur.com/swQdgcT.png" alt="Arte F360 G"></div>
+    <div class="card"><img src="https://imgur.com/aKkPbqo.png" alt="Arte F360 H"></div>
+    <div class="card"><img src="https://imgur.com/qT1SrVg.png" alt="Arte F360 I"></div>
   </div>
 </section>
 
@@ -330,54 +307,76 @@
 
 <script>
   const slider = document.getElementById('slider');
-  let index = 0;
-  const cards = document.querySelectorAll('.slider-track .card');
+  let cards = document.querySelectorAll('.slider-track .card');
+  const totalOriginalCards = cards.length;
+  
+  // Clonar os cards para efeito infinito
+  cards.forEach(card => {
+    const clone = card.cloneNode(true);
+    slider.appendChild(clone);
+  });
 
-  function getSlideWidth() { return cards[0].offsetWidth + 15; }
-  function updateSlide() { slider.style.transform = `translateX(-${index * getSlideWidth()}px)`; }
-  
-  // Atualizado para reiniciar no item 8 (index 7) para evitar espaços vazios
-  function nextSlide() { 
-    if (index >= 7) { 
-      index = 0; 
-    } else { 
-      index++; 
-    }
-    updateSlide(); 
+  let index = 0;
+  function getSlideWidth() { return document.querySelector('.card').offsetWidth + 15; }
+
+  function updateSlide(withAnimation = true) {
+    slider.style.transition = withAnimation ? "transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)" : "none";
+    slider.style.transform = `translateX(-${index * getSlideWidth()}px)`;
   }
-  
-  function prevSlide() { 
-    if (index <= 0) { 
-      index = 7; 
-    } else { 
-      index--; 
+
+  function nextSlide() {
+    index++;
+    updateSlide();
+    
+    // Reset silencioso quando chegar ao fim dos clones
+    if (index >= totalOriginalCards) {
+      setTimeout(() => {
+        index = 0;
+        updateSlide(false);
+      }, 600);
     }
-    updateSlide(); 
+  }
+
+  function prevSlide() {
+    if (index <= 0) {
+      index = totalOriginalCards;
+      updateSlide(false);
+      setTimeout(() => {
+        index--;
+        updateSlide(true);
+      }, 10);
+    } else {
+      index--;
+      updateSlide();
+    }
   }
 
   let autoRun = setInterval(nextSlide, 4000);
 
+  // Modal Logic
   const modal = document.getElementById("imageModal");
   const modalImg = document.getElementById("imgExpanded");
   const captionText = document.getElementById("caption");
 
-  document.querySelectorAll('.card').forEach(card => {
-    card.addEventListener('click', function() {
-      const img = this.querySelector('img');
+  // Usar delegação de evento para funcionar com clones
+  document.addEventListener('click', function(e) {
+    const card = e.target.closest('.card');
+    if (card) {
+      const img = card.querySelector('img');
       modal.style.display = "flex";
       modalImg.src = img.src;
       captionText.innerHTML = img.alt;
       clearInterval(autoRun);
-    });
+    }
   });
 
   function closeModal() { 
     modal.style.display = "none"; 
     autoRun = setInterval(nextSlide, 4000);
   }
+  
   window.onclick = (e) => { if (e.target == modal) closeModal(); }
 </script>
 
 </body>
 </html>
-
