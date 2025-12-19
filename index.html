@@ -340,83 +340,54 @@
 
 <script>
   const slider = document.getElementById('slider');
-  let originalCards = document.querySelectorAll('.slider-track .card');
-  const totalCards = originalCards.length;
+  let index = 0;
+  let direction = 1; // 1 para frente, -1 para trás
+  const cards = document.querySelectorAll('.slider-track .card');
+  const totalItems = cards.length;
 
-  // Clone das primeiras e últimas imagens para criar o efeito infinito fluido
-  const firstClone = originalCards[0].cloneNode(true);
-  const lastClone = originalCards[totalCards - 1].cloneNode(true);
-  
-  slider.appendChild(firstClone);
-  slider.insertBefore(lastClone, originalCards[0]);
-
-  let index = 1; // Começa no 1 porque o index 0 agora é o clone do último
-  
   function getSlideWidth() { 
-    const card = document.querySelector('.card');
-    return card.offsetWidth + 15; 
+    return cards[0].offsetWidth + 15; 
   }
 
-  // Posiciona inicialmente no primeiro item real
-  slider.style.transform = `translateX(-${index * getSlideWidth()}px)`;
-
-  function updateSlide(animate = true) {
-    if (animate) {
-      slider.style.transition = "transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)";
-    } else {
-      slider.style.transition = "none";
-    }
-    slider.style.transform = `translateX(-${index * getSlideWidth()}px)`;
+  function updateSlide() { 
+    slider.style.transform = `translateX(-${index * getSlideWidth()}px)`; 
   }
 
   function nextSlide() {
-    if (index >= totalCards) {
-      index++;
-      updateSlide(true);
-      setTimeout(() => {
-        index = 1;
-        updateSlide(false);
-      }, 600);
-    } else {
-      index++;
-      updateSlide(true);
+    // Se estiver indo para frente (1) e chegar na última imagem, inverte a direção
+    if (direction === 1 && index >= totalItems - 1) {
+      direction = -1;
+    } 
+    // Se estiver voltando (-1) e chegar na primeira imagem, inverte para frente
+    else if (direction === -1 && index <= 0) {
+      direction = 1;
     }
+
+    index += direction;
+    updateSlide();
   }
 
   function prevSlide() {
-    if (index <= 1) {
+    // Lógica manual da seta esquerda: força voltar 1
+    if (index > 0) {
       index--;
-      updateSlide(true);
-      setTimeout(() => {
-        index = totalCards;
-        updateSlide(false);
-      }, 600);
+      updateSlide();
     } else {
-      index--;
-      updateSlide(true);
+      // Se estiver no início, pula para o fim e inverte direção
+      index = totalItems - 1;
+      direction = -1;
+      updateSlide();
     }
   }
 
+  // A função nextSlide agora é inteligente: ela sabe se deve somar ou subtrair
   let autoRun = setInterval(nextSlide, 4000);
 
   const modal = document.getElementById("imageModal");
   const modalImg = document.getElementById("imgExpanded");
   const captionText = document.getElementById("caption");
 
-  // Ajustado para funcionar com elementos clonados dinamicamente
-  slider.addEventListener('click', function(e) {
-    const card = e.target.closest('.card');
-    if(card) {
-      const img = card.querySelector('img');
-      modal.style.display = "flex";
-      modalImg.src = img.src;
-      captionText.innerHTML = img.alt;
-      clearInterval(autoRun);
-    }
-  });
-
-  // Listener para os cards da galeria estática
-  document.querySelectorAll('.portfolio-grid .card').forEach(card => {
+  document.querySelectorAll('.card').forEach(card => {
     card.addEventListener('click', function() {
       const img = this.querySelector('img');
       modal.style.display = "flex";
@@ -430,13 +401,10 @@
     modal.style.display = "none"; 
     autoRun = setInterval(nextSlide, 4000);
   }
-  
+
   window.onclick = (e) => { if (e.target == modal) closeModal(); }
   
-  // Reajustar posição se a janela mudar de tamanho
-  window.addEventListener('resize', () => {
-    updateSlide(false);
-  });
+  window.addEventListener('resize', updateSlide);
 </script>
 
 </body>
