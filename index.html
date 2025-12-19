@@ -35,17 +35,9 @@
       z-index: 1000;
     }
 
-    .logo img {
-      height: 80px;
-      width: auto;
-      display: block;
-    }
+    .logo img { height: 80px; width: auto; display: block; }
 
-    nav {
-      display: flex;
-      gap: 35px;
-    }
-
+    nav { display: flex; gap: 35px; }
     nav a {
       text-decoration: none;
       color: #111;
@@ -55,16 +47,16 @@
       letter-spacing: 1px;
       transition: color 0.3s;
     }
-
     nav a:hover { color: #c60000; }
 
-    /* SEÇÕES */
+    /* SEÇÕES GERAIS */
     section {
-      padding: 120px 5% 80px;
+      padding: 140px 5% 80px;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      position: relative;
     }
 
     h1 {
@@ -72,21 +64,70 @@
       font-size: 48px;
       text-transform: uppercase;
       font-weight: 900;
+      position: relative;
+      z-index: 2;
     }
 
-    #historia { background-color: #ffffff; color: #111; }
-    #historia h1 { color: #c60000; }
+    /* SEÇÃO HISTÓRIA COM MOSAICO AO FUNDO */
+    #historia { 
+      background-color: #0f0f0f; /* Fundo mais escuro */
+      color: #ffffff; 
+      overflow: hidden;
+    }
 
+    .mosaic-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 5px;
+      opacity: 0.15; /* Miniaturas suaves ao fundo */
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .mosaic-bg img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    #historia .content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+    }
+
+    #historia p {
+      font-size: 22px;
+      margin-bottom: 35px; /* Espaço entre as frases */
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+
+    /* SEÇÃO PORTFÓLIO */
     #portfolio { 
       background-color: #c60000; 
       color: #ffffff; 
       padding-left: 2%; 
       padding-right: 2%; 
     }
-    #portfolio h1 { color: #ffffff; padding-left: 3%; }
 
-    #contato { background-color: #000000; color: #ffffff; }
-    #contato h1 { color: #c60000; }
+    /* NOVO MOSAICO PORTFÓLIO (IMAGENS MAIORES) */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 60px;
+      padding: 0 3%;
+    }
+
+    .portfolio-grid .card {
+      min-width: unset; /* Sobrescreve o estilo do slider */
+      height: 400px;
+    }
 
     /* SLIDER */
     .slider-container {
@@ -94,13 +135,13 @@
       width: 100%;
       overflow: hidden;
       padding: 30px 0;
+      z-index: 2;
     }
 
     .slider-track {
       display: flex;
       gap: 15px;
       transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-      will-change: transform;
     }
 
     .card {
@@ -113,15 +154,8 @@
       cursor: pointer;
       transition: transform 0.3s ease;
     }
-
-    .card:hover { transform: scale(1.02); }
-
-    .card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
+    .card:hover { transform: scale(1.03); }
+    .card img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
     .arrow {
       position: absolute;
@@ -139,69 +173,40 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     }
-
     .arrow.left { left: 20px; }
     .arrow.right { right: 20px; }
 
-    /* MODAL / LIGHTBOX */
+    /* MODAL */
     .modal {
       display: none;
       position: fixed;
       z-index: 2000;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0; width: 100%; height: 100%;
       background-color: rgba(0, 0, 0, 0.95);
-      backdrop-filter: blur(5px);
+      backdrop-filter: blur(8px);
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      padding: 20px;
     }
-
     .modal-content {
-      max-width: 90%;
-      max-height: 80vh;
+      max-width: 90%; max-height: 80vh;
       border: 3px solid #c60000;
-      border-radius: 8px;
-      box-shadow: 0 0 30px rgba(198, 0, 0, 0.3);
       animation: zoomIn 0.4s ease;
     }
+    #caption { color: #fff; margin-top: 20px; font-size: 24px; font-weight: 700; text-transform: uppercase; }
+    .close { position: absolute; top: 30px; right: 40px; color: #fff; font-size: 50px; cursor: pointer; }
 
-    #caption {
-      color: #fff;
-      margin-top: 20px;
-      font-size: 24px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      text-align: center;
-    }
+    @keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
-    .close {
-      position: absolute;
-      top: 30px;
-      right: 40px;
-      color: #fff;
-      font-size: 50px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: color 0.3s;
-    }
-
-    .close:hover { color: #c60000; }
-
-    @keyframes zoomIn {
-      from { transform: scale(0.7); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
+    /* CONTATO */
+    #contato { background-color: #000000; color: #ffffff; }
+    #contato h1 { color: #c60000; }
+    footer { margin-top: 80px; padding-top: 30px; border-top: 1px solid #333; color: #888; }
 
     @media (max-width: 768px) {
-      .logo img { height: 50px; }
-      .card { min-width: 280px; height: 380px; }
+      .mosaic-bg { grid-template-columns: repeat(3, 1fr); }
+      .portfolio-grid { grid-template-columns: 1fr; }
       h1 { font-size: 34px; }
     }
   </style>
@@ -221,20 +226,28 @@
 </header>
 
 <section id="historia">
-  <h1>Minha história</h1>
-  <p>
-    Mais de 8 anos de experiência com a gestão de redes sociais e comunidade, desde o manejo de interações,<p> 
-    reports e métricas de engajamento à criação de conteúdo digital, insights estratégico e gestão de crises.
-  <p>
-<p>
-  <p>
-    Hoje trabalho principalmente com o Photoshop, criando ilustrações avançadas e montagens especializadas para<p> 
-    redes sociais.
-  </p>
+  <div class="mosaic-bg">
+    <img src="https://imgur.com/ovzQOFI.png"> <img src="https://imgur.com/uYUjTzb.png">
+    <img src="https://imgur.com/KM27uUk.png"> <img src="https://imgur.com/KriwRPM.png">
+    <img src="https://imgur.com/OZRDQRN.png"> <img src="https://imgur.com/dWKBXKy.png">
+    <img src="https://imgur.com/qdnKCVw.png"> <img src="https://imgur.com/dA8hJhr.png">
+    <img src="https://imgur.com/rcJGAdB.png"> <img src="https://imgur.com/nVq8vVR.png">
+  </div>
+
+  <div class="content">
+    <h1>Minha história</h1>
+    <p>
+      Mais de 8 anos de experiência com a gestão de redes sociais e comunidade, desde o manejo de interações, 
+      reports e métricas de engajamento à criação de conteúdo digital, insights estratégico e gestão de crises.
+    </p>
+    <p>
+      Hoje trabalho principalmente com o Photoshop, criando ilustrações avançadas e montagens especializadas para redes sociais.
+    </p>
+  </div>
 </section>
 
 <section id="portfolio">
-  <h1>Portfólio</h1>
+  <h1>Portfólio (Slider)</h1>
   <div class="slider-container">
     <button class="arrow left" onclick="prevSlide()">‹</button>
     <div class="slider-track" id="slider">
@@ -250,6 +263,14 @@
       <div class="card"><img src="https://imgur.com/nVq8vVR.png" alt="Edição de Imagens"></div>
     </div>
     <button class="arrow right" onclick="nextSlide()">›</button>
+  </div>
+
+  <h1 style="margin-top: 80px;">Galeria Completa</h1>
+  <div class="portfolio-grid">
+    <div class="card"><img src="https://imgur.com/ovzQOFI.png" alt="Design Editorial"></div>
+    <div class="card"><img src="https://imgur.com/uYUjTzb.png" alt="Interface Web"></div>
+    <div class="card"><img src="https://imgur.com/KM27uUk.png" alt="Mockups"></div>
+    <div class="card"><img src="https://imgur.com/nVq8vVR.png" alt="Efeitos Especiais"></div>
   </div>
 </section>
 
@@ -270,66 +291,39 @@
 </section>
 
 <script>
-  /* --- Lógica do Slider --- */
   const slider = document.getElementById('slider');
   let index = 0;
-  const cards = document.querySelectorAll('.card');
-  const totalSlides = cards.length;
-  
+  const cards = document.querySelectorAll('.slider-track .card');
+  const allCards = document.querySelectorAll('.card'); // Todos incluindo os do mosaico
+
   function getSlideWidth() { return cards[0].offsetWidth + 15; }
   function updateSlide() { slider.style.transform = `translateX(-${index * getSlideWidth()}px)`; }
 
-  function nextSlide() {
-    index >= 7 ? index = 0 : index++;
-    updateSlide();
-  }
-
-  function prevSlide() {
-    index <= 0 ? index = 7 : index--;
-    updateSlide();
-  }
+  function nextSlide() { index >= 7 ? index = 0 : index++; updateSlide(); }
+  function prevSlide() { index <= 0 ? index = 7 : index--; updateSlide(); }
 
   let autoRun = setInterval(nextSlide, 4000);
-  function resetTimer() {
-    clearInterval(autoRun);
-    autoRun = setInterval(nextSlide, 4000);
-  }
+  document.querySelectorAll('.arrow').forEach(btn => btn.addEventListener('click', () => {
+    clearInterval(autoRun); autoRun = setInterval(nextSlide, 4000);
+  }));
 
-  document.querySelectorAll('.arrow').forEach(btn => btn.addEventListener('click', resetTimer));
-  window.addEventListener('resize', updateSlide);
-
-  /* --- Lógica do Modal (Zoom e Legenda) --- */
+  /* --- Lógica do Modal --- */
   const modal = document.getElementById("imageModal");
   const modalImg = document.getElementById("imgExpanded");
   const captionText = document.getElementById("caption");
 
-  // Adiciona evento de clique em todos os cards
-  cards.forEach(card => {
+  allCards.forEach(card => {
     card.addEventListener('click', function() {
       const img = this.querySelector('img');
       modal.style.display = "flex";
       modalImg.src = img.src;
-      captionText.innerHTML = img.alt; // Pega a legenda do atributo 'alt'
-      clearInterval(autoRun); // Pausa o slider enquanto vê a foto
+      captionText.innerHTML = img.alt;
     });
   });
 
-  function closeModal() {
-    modal.style.display = "none";
-    autoRun = setInterval(nextSlide, 4000); // Retoma o slider
-  }
-
-  // Fecha o modal se clicar fora da imagem
-  window.onclick = function(event) {
-    if (event.target == modal) closeModal();
-  }
+  function closeModal() { modal.style.display = "none"; }
+  window.onclick = (e) => { if (e.target == modal) closeModal(); }
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
