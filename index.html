@@ -10,13 +10,14 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     }
 
     body {
       background: #ffffff;
       color: #111;
       scroll-behavior: smooth;
+      line-height: 1.6;
     }
 
     /* HEADER */
@@ -24,20 +25,19 @@
       position: fixed;
       top: 0;
       width: 100%;
-      background: #ffffff;
-      border-bottom: 3px solid #c60000;
-      padding: 18px 8%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(5px);
+      border-bottom: 2px solid #c60000;
+      padding: 10px 8%;
       display: flex;
       justify-content: space-between;
       align-items: center;
       z-index: 1000;
     }
 
-    .logo {
-      font-size: 24px;
-      font-weight: bold;
-      color: #c60000;
-      letter-spacing: 1px;
+    .logo img {
+      height: 50px; /* Ajuste conforme necessário */
+      display: block;
     }
 
     nav {
@@ -48,111 +48,136 @@
     nav a {
       text-decoration: none;
       color: #111;
-      font-size: 14px;
-      font-weight: bold;
+      font-size: 13px;
+      font-weight: 700;
       text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: color 0.3s;
     }
 
-    /* SEÇÕES */
+    nav a:hover {
+      color: #c60000;
+    }
+
+    /* SEÇÕES GERAIS */
     section {
-      padding: 130px 8% 100px;
+      padding: 140px 8% 100px;
       min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     h1 {
-      margin-bottom: 24px;
-      color: #c60000;
-      font-size: 32px;
+      margin-bottom: 30px;
+      font-size: 42px;
+      text-transform: uppercase;
+      letter-spacing: -1px;
     }
 
     p {
-      max-width: 720px;
-      line-height: 1.7;
-      font-size: 16px;
+      max-width: 800px;
+      font-size: 18px;
+      margin-bottom: 20px;
     }
 
-    /* HISTÓRIA */
+    /* CORES POR SEÇÃO */
+    
+    /* 1. Minha História - Branco */
     #historia {
-      background: #ffffff;
+      background-color: #ffffff;
+      color: #111;
     }
+    #historia h1 { color: #c60000; }
 
-    /* PORTFÓLIO */
+    /* 2. Portfólio - Vermelho */
     #portfolio {
-      background: #f5f5f5;
+      background-color: #c60000;
+      color: #ffffff;
     }
+    #portfolio h1 { color: #ffffff; }
 
+    /* 3. Contato - Preto */
+    #contato {
+      background-color: #111111;
+      color: #ffffff;
+    }
+    #contato h1 { color: #c60000; }
+
+    /* SLIDER (PORTFÓLIO) */
     .slider-container {
       position: relative;
-      margin-top: 50px;
+      margin-top: 40px;
       overflow: hidden;
+      padding: 20px 0;
     }
 
     .slider-track {
       display: flex;
-      gap: 24px;
-      transition: transform 0.6s ease;
+      gap: 20px;
+      transition: transform 0.8s cubic-bezier(0.45, 0, 0.55, 1);
     }
 
     .card {
-      min-width: 300px;
-      background: #ffffff;
-      border-radius: 12px;
+      min-width: 320px;
+      max-width: 320px;
+      background: #000;
+      border-radius: 8px;
       overflow: hidden;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.02);
     }
 
     .card img {
       width: 100%;
+      height: 400px;
+      object-fit: cover;
       display: block;
     }
 
-    /* BOTÕES */
+    /* SETAS */
     .arrow {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: #c60000;
+      background: rgba(0, 0, 0, 0.5);
       color: #ffffff;
-      border: none;
-      font-size: 26px;
-      padding: 10px 16px;
+      border: 1px solid rgba(255,255,255,0.3);
+      font-size: 30px;
+      width: 50px;
+      height: 50px;
       cursor: pointer;
       border-radius: 50%;
       z-index: 10;
-    }
-
-    .arrow.left {
-      left: 10px;
-    }
-
-    .arrow.right {
-      right: 10px;
-    }
-
-    .controls {
-      margin-top: 30px;
       display: flex;
+      align-items: center;
       justify-content: center;
+      transition: background 0.3s;
     }
 
-    .btn {
-      background: #c60000;
-      color: #ffffff;
-      border: none;
-      padding: 12px 22px;
-      font-size: 15px;
-      cursor: pointer;
-      border-radius: 8px;
+    .arrow:hover {
+      background: #000;
     }
 
-    /* CONTATO */
-    #contato {
-      background: #ffffff;
-    }
+    .arrow.left { left: 0; }
+    .arrow.right { right: 0; }
 
     footer {
-      margin-top: 40px;
+      margin-top: 60px;
+      padding-top: 20px;
+      border-top: 1px solid #333;
       font-size: 14px;
+      opacity: 0.8;
+    }
+
+    @media (max-width: 768px) {
+      nav { display: none; } /* Simplicidade no mobile */
+      h1 { font-size: 32px; }
+      .card { min-width: 280px; }
     }
   </style>
 </head>
@@ -160,7 +185,9 @@
 <body>
 
 <header>
-  <div class="logo">F360</div>
+  <div class="logo">
+    <img src="https://imgur.com/QNgMyug.png" alt="F360 Logo">
+  </div>
 
   <nav>
     <a href="#historia">Minha história</a>
@@ -185,69 +212,72 @@
     <button class="arrow left" onclick="prevSlide()">‹</button>
 
     <div class="slider-track" id="slider">
-      <div class="card"><img src="imagens/img1.png" alt=""></div>
-      <div class="card"><img src="imagens/img2.png" alt=""></div>
-      <div class="card"><img src="imagens/img3.png" alt=""></div>
-      <div class="card"><img src="imagens/img4.png" alt=""></div>
-      <div class="card"><img src="imagens/img5.png" alt=""></div>
-      <div class="card"><img src="imagens/img6.png" alt=""></div>
-      <div class="card"><img src="imagens/img7.png" alt=""></div>
+      <div class="card"><img src="https://imgur.com/ovzQOFI.png" alt="Job 1"></div>
+      <div class="card"><img src="https://imgur.com/uYUjTzb.png" alt="Job 2"></div>
+      <div class="card"><img src="https://imgur.com/KM27uUk.png" alt="Job 3"></div>
+      <div class="card"><img src="https://imgur.com/KriwRPM.png" alt="Job 4"></div>
+      <div class="card"><img src="https://imgur.com/OZRDQRN.png" alt="Job 5"></div>
+      <div class="card"><img src="https://imgur.com/dWKBXKy.png" alt="Job 6"></div>
+      <div class="card"><img src="https://imgur.com/qdnKCVw.png" alt="Job 7"></div>
+      <div class="card"><img src="https://imgur.com/dA8hJhr.png" alt="Job 8"></div>
+      <div class="card"><img src="https://imgur.com/rcJGAdB.png" alt="Job 9"></div>
     </div>
 
     <button class="arrow right" onclick="nextSlide()">›</button>
-  </div>
-
-  <div class="controls">
-    <button class="btn" onclick="toggleAuto()">⏸ Pausar / ▶️ Play</button>
   </div>
 </section>
 
 <section id="contato">
   <h1>Contato</h1>
-  <p>Email: contato@f360.com.br</p>
-  <p>WhatsApp: (00) 00000-0000</p>
+  <p><strong>Email:</strong> contato@f360.com.br</p>
+  <p><strong>WhatsApp:</strong> (00) 00000-0000</p>
 
   <footer>
     <p>CNPJ: 00.000.000/0001-00</p>
+    <p>&copy; 2024 F360. Todos os direitos reservados.</p>
   </footer>
 </section>
 
 <script>
   const slider = document.getElementById('slider');
   let index = 0;
-  let auto = true;
-  const slideWidth = 324;
+  const cards = document.querySelectorAll('.card');
+  const totalSlides = cards.length;
+  
+  // Ajuste do cálculo de largura (card + gap)
+  function getSlideWidth() {
+    return cards[0].offsetWidth + 20; 
+  }
 
   function updateSlide() {
-    slider.style.transform = `translateX(-${index * slideWidth}px)`;
+    const width = getSlideWidth();
+    slider.style.transform = `translateX(-${index * width}px)`;
   }
 
   function nextSlide() {
-    if (index < slider.children.length - 1) {
+    // Se chegar no fim, volta ao início, senão avança
+    if (index < totalSlides - 1) {
       index++;
-      updateSlide();
+    } else {
+      index = 0;
     }
+    updateSlide();
   }
 
   function prevSlide() {
     if (index > 0) {
       index--;
-      updateSlide();
+    } else {
+      index = totalSlides - 1;
     }
+    updateSlide();
   }
 
-  function autoSlide() {
-    if (auto) {
-      index = (index + 1) % slider.children.length;
-      updateSlide();
-    }
-  }
+  // Movimento automático (Passando devagar a cada 4 segundos)
+  setInterval(nextSlide, 4000);
 
-  function toggleAuto() {
-    auto = !auto;
-  }
-
-  setInterval(autoSlide, 3500);
+  // Reajustar slider se a tela mudar de tamanho
+  window.addEventListener('resize', updateSlide);
 </script>
 
 </body>
