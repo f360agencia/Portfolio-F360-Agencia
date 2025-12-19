@@ -68,31 +68,56 @@
       z-index: 2;
     }
 
-    /* SEÇÃO HISTÓRIA COM MOSAICO AO FUNDO */
+    /* SEÇÃO HISTÓRIA COM SCROLL INFINITO AO FUNDO */
     #historia { 
-      background-color: #0f0f0f; /* Fundo mais escuro */
+      background-color: #0f0f0f;
       color: #ffffff; 
       overflow: hidden;
+      position: relative;
     }
 
-    .mosaic-bg {
+    /* Contêiner da animação */
+    .mosaic-container {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 5px;
-      opacity: 0.15; /* Miniaturas suaves ao fundo */
       z-index: 1;
       pointer-events: none;
+      opacity: 0.12; /* Ajuste fino da opacidade */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
     }
 
-    .mosaic-bg img {
-      width: 100%;
-      height: 200px;
+    .scroll-row {
+      display: flex;
+      width: calc(250px * 20); /* Largura suficiente para as fotos duplicadas */
+      animation: scrollLeft 40s linear infinite;
+    }
+
+    /* Segunda linha rodando para o lado oposto para dar dinamismo */
+    .scroll-row.reverse {
+      animation: scrollRight 45s linear infinite;
+    }
+
+    .scroll-row img {
+      width: 250px;
+      height: 180px;
       object-fit: cover;
+      margin-right: 10px;
+      border-radius: 4px;
+    }
+
+    @keyframes scrollLeft {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(calc(-250px * 10 - 100px)); }
+    }
+
+    @keyframes scrollRight {
+      0% { transform: translateX(calc(-250px * 10 - 100px)); }
+      100% { transform: translateX(0); }
     }
 
     #historia .content {
@@ -103,8 +128,8 @@
 
     #historia p {
       font-size: 22px;
-      margin-bottom: 35px; /* Espaço entre as frases */
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      margin-bottom: 40px; /* Mais espaço entre as frases */
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
     }
 
     /* SEÇÃO PORTFÓLIO */
@@ -115,7 +140,6 @@
       padding-right: 2%; 
     }
 
-    /* NOVO MOSAICO PORTFÓLIO (IMAGENS MAIORES) */
     .portfolio-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -124,10 +148,7 @@
       padding: 0 3%;
     }
 
-    .portfolio-grid .card {
-      min-width: unset; /* Sobrescreve o estilo do slider */
-      height: 400px;
-    }
+    .portfolio-grid .card { min-width: unset; height: 400px; }
 
     /* SLIDER */
     .slider-container {
@@ -194,7 +215,7 @@
       border: 3px solid #c60000;
       animation: zoomIn 0.4s ease;
     }
-    #caption { color: #fff; margin-top: 20px; font-size: 24px; font-weight: 700; text-transform: uppercase; }
+    #caption { color: #fff; margin-top: 20px; font-size: 24px; font-weight: 700; text-transform: uppercase; text-align: center; }
     .close { position: absolute; top: 30px; right: 40px; color: #fff; font-size: 50px; cursor: pointer; }
 
     @keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
@@ -205,9 +226,8 @@
     footer { margin-top: 80px; padding-top: 30px; border-top: 1px solid #333; color: #888; }
 
     @media (max-width: 768px) {
-      .mosaic-bg { grid-template-columns: repeat(3, 1fr); }
-      .portfolio-grid { grid-template-columns: 1fr; }
       h1 { font-size: 34px; }
+      .portfolio-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -226,12 +246,31 @@
 </header>
 
 <section id="historia">
-  <div class="mosaic-bg">
-    <img src="https://imgur.com/ovzQOFI.png"> <img src="https://imgur.com/uYUjTzb.png">
-    <img src="https://imgur.com/KM27uUk.png"> <img src="https://imgur.com/KriwRPM.png">
-    <img src="https://imgur.com/OZRDQRN.png"> <img src="https://imgur.com/dWKBXKy.png">
-    <img src="https://imgur.com/qdnKCVw.png"> <img src="https://imgur.com/dA8hJhr.png">
-    <img src="https://imgur.com/rcJGAdB.png"> <img src="https://imgur.com/nVq8vVR.png">
+  <div class="mosaic-container">
+    <div class="scroll-row">
+      <img src="https://imgur.com/ovzQOFI.png"> <img src="https://imgur.com/uYUjTzb.png">
+      <img src="https://imgur.com/KM27uUk.png"> <img src="https://imgur.com/KriwRPM.png">
+      <img src="https://imgur.com/OZRDQRN.png"> <img src="https://imgur.com/dWKBXKy.png">
+      <img src="https://imgur.com/qdnKCVw.png"> <img src="https://imgur.com/dA8hJhr.png">
+      <img src="https://imgur.com/rcJGAdB.png"> <img src="https://imgur.com/nVq8vVR.png">
+      <img src="https://imgur.com/ovzQOFI.png"> <img src="https://imgur.com/uYUjTzb.png">
+      <img src="https://imgur.com/KM27uUk.png"> <img src="https://imgur.com/KriwRPM.png">
+      <img src="https://imgur.com/OZRDQRN.png"> <img src="https://imgur.com/dWKBXKy.png">
+      <img src="https://imgur.com/qdnKCVw.png"> <img src="https://imgur.com/dA8hJhr.png">
+      <img src="https://imgur.com/rcJGAdB.png"> <img src="https://imgur.com/nVq8vVR.png">
+    </div>
+    <div class="scroll-row reverse">
+      <img src="https://imgur.com/OZRDQRN.png"> <img src="https://imgur.com/dWKBXKy.png">
+      <img src="https://imgur.com/qdnKCVw.png"> <img src="https://imgur.com/dA8hJhr.png">
+      <img src="https://imgur.com/rcJGAdB.png"> <img src="https://imgur.com/nVq8vVR.png">
+      <img src="https://imgur.com/ovzQOFI.png"> <img src="https://imgur.com/uYUjTzb.png">
+      <img src="https://imgur.com/KM27uUk.png"> <img src="https://imgur.com/KriwRPM.png">
+      <img src="https://imgur.com/OZRDQRN.png"> <img src="https://imgur.com/dWKBXKy.png">
+      <img src="https://imgur.com/qdnKCVw.png"> <img src="https://imgur.com/dA8hJhr.png">
+      <img src="https://imgur.com/rcJGAdB.png"> <img src="https://imgur.com/nVq8vVR.png">
+      <img src="https://imgur.com/ovzQOFI.png"> <img src="https://imgur.com/uYUjTzb.png">
+      <img src="https://imgur.com/KM27uUk.png"> <img src="https://imgur.com/KriwRPM.png">
+    </div>
   </div>
 
   <div class="content">
@@ -291,10 +330,11 @@
 </section>
 
 <script>
+  /* --- Slider --- */
   const slider = document.getElementById('slider');
   let index = 0;
   const cards = document.querySelectorAll('.slider-track .card');
-  const allCards = document.querySelectorAll('.card'); // Todos incluindo os do mosaico
+  const allCards = document.querySelectorAll('.card');
 
   function getSlideWidth() { return cards[0].offsetWidth + 15; }
   function updateSlide() { slider.style.transform = `translateX(-${index * getSlideWidth()}px)`; }
@@ -303,11 +343,8 @@
   function prevSlide() { index <= 0 ? index = 7 : index--; updateSlide(); }
 
   let autoRun = setInterval(nextSlide, 4000);
-  document.querySelectorAll('.arrow').forEach(btn => btn.addEventListener('click', () => {
-    clearInterval(autoRun); autoRun = setInterval(nextSlide, 4000);
-  }));
 
-  /* --- Lógica do Modal --- */
+  /* --- Modal --- */
   const modal = document.getElementById("imageModal");
   const modalImg = document.getElementById("imgExpanded");
   const captionText = document.getElementById("caption");
@@ -318,10 +355,15 @@
       modal.style.display = "flex";
       modalImg.src = img.src;
       captionText.innerHTML = img.alt;
+      clearInterval(autoRun);
     });
   });
 
-  function closeModal() { modal.style.display = "none"; }
+  function closeModal() { 
+    modal.style.display = "none"; 
+    autoRun = setInterval(nextSlide, 4000);
+  }
+  
   window.onclick = (e) => { if (e.target == modal) closeModal(); }
 </script>
 
