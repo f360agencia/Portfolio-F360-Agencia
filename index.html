@@ -18,6 +18,7 @@
       color: #111;
       scroll-behavior: smooth;
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
     /* HEADER */
@@ -25,31 +26,32 @@
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(5px);
-      border-bottom: 2px solid #c60000;
-      padding: 10px 8%;
+      background: #ffffff;
+      border-bottom: 4px solid #c60000;
+      padding: 15px 5%;
       display: flex;
       justify-content: space-between;
       align-items: center;
       z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
     .logo img {
-      height: 50px; /* Ajuste conforme necessário */
+      height: 80px; /* Logo maior conforme solicitado */
+      width: auto;
       display: block;
     }
 
     nav {
       display: flex;
-      gap: 28px;
+      gap: 35px;
     }
 
     nav a {
       text-decoration: none;
       color: #111;
-      font-size: 13px;
-      font-weight: 700;
+      font-size: 14px;
+      font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 1px;
       transition: color 0.3s;
@@ -61,7 +63,7 @@
 
     /* SEÇÕES GERAIS */
     section {
-      padding: 140px 8% 100px;
+      padding: 160px 5% 100px; /* Padding reduzido nas laterais para as imagens expandirem */
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -69,72 +71,60 @@
     }
 
     h1 {
-      margin-bottom: 30px;
-      font-size: 42px;
+      margin-bottom: 40px;
+      font-size: 48px;
       text-transform: uppercase;
-      letter-spacing: -1px;
+      font-weight: 900;
     }
 
     p {
       max-width: 800px;
-      font-size: 18px;
-      margin-bottom: 20px;
+      font-size: 20px;
+      margin-bottom: 25px;
     }
 
     /* CORES POR SEÇÃO */
-    
-    /* 1. Minha História - Branco */
-    #historia {
-      background-color: #ffffff;
-      color: #111;
-    }
+    #historia { background-color: #ffffff; color: #111; }
     #historia h1 { color: #c60000; }
 
-    /* 2. Portfólio - Vermelho */
-    #portfolio {
-      background-color: #c60000;
-      color: #ffffff;
+    #portfolio { 
+      background-color: #c60000; 
+      color: #ffffff; 
+      padding-left: 2%; /* Aproxima as imagens do canto esquerdo */
+      padding-right: 2%; /* Aproxima as imagens do canto direito */
     }
-    #portfolio h1 { color: #ffffff; }
+    #portfolio h1 { color: #ffffff; padding-left: 3%; }
 
-    /* 3. Contato - Preto */
-    #contato {
-      background-color: #111111;
-      color: #ffffff;
-    }
+    #contato { background-color: #000000; color: #ffffff; }
     #contato h1 { color: #c60000; }
 
     /* SLIDER (PORTFÓLIO) */
     .slider-container {
       position: relative;
-      margin-top: 40px;
+      width: 100%;
       overflow: hidden;
-      padding: 20px 0;
+      padding: 30px 0;
     }
 
     .slider-track {
       display: flex;
-      gap: 20px;
-      transition: transform 0.8s cubic-bezier(0.45, 0, 0.55, 1);
+      gap: 15px;
+      transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+      will-change: transform;
     }
 
     .card {
-      min-width: 320px;
-      max-width: 320px;
+      min-width: 350px;
+      height: 450px;
       background: #000;
-      border-radius: 8px;
+      border-radius: 4px;
       overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-      transition: transform 0.3s;
-    }
-
-    .card:hover {
-      transform: scale(1.02);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.4);
     }
 
     .card img {
       width: 100%;
-      height: 400px;
+      height: 100%;
       object-fit: cover;
       display: block;
     }
@@ -144,40 +134,38 @@
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: rgba(0, 0, 0, 0.5);
-      color: #ffffff;
-      border: 1px solid rgba(255,255,255,0.3);
-      font-size: 30px;
-      width: 50px;
-      height: 50px;
+      background: rgba(255, 255, 255, 0.9);
+      color: #c60000;
+      border: none;
+      font-size: 35px;
+      width: 60px;
+      height: 60px;
       cursor: pointer;
       border-radius: 50%;
       z-index: 10;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: background 0.3s;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      transition: all 0.3s;
     }
 
-    .arrow:hover {
-      background: #000;
-    }
-
-    .arrow.left { left: 0; }
-    .arrow.right { right: 0; }
+    .arrow:hover { background: #fff; transform: translateY(-50%) scale(1.1); }
+    .arrow.left { left: 20px; }
+    .arrow.right { right: 20px; }
 
     footer {
-      margin-top: 60px;
-      padding-top: 20px;
+      margin-top: 80px;
+      padding-top: 30px;
       border-top: 1px solid #333;
       font-size: 14px;
-      opacity: 0.8;
+      color: #888;
     }
 
     @media (max-width: 768px) {
-      nav { display: none; } /* Simplicidade no mobile */
-      h1 { font-size: 32px; }
-      .card { min-width: 280px; }
+      .logo img { height: 60px; }
+      h1 { font-size: 34px; }
+      .card { min-width: 280px; height: 380px; }
     }
   </style>
 </head>
@@ -244,9 +232,9 @@
   const cards = document.querySelectorAll('.card');
   const totalSlides = cards.length;
   
-  // Ajuste do cálculo de largura (card + gap)
   function getSlideWidth() {
-    return cards[0].offsetWidth + 20; 
+    // Calcula largura do card + o gap de 15px
+    return cards[0].offsetWidth + 15; 
   }
 
   function updateSlide() {
@@ -255,28 +243,39 @@
   }
 
   function nextSlide() {
-    // Se chegar no fim, volta ao início, senão avança
-    if (index < totalSlides - 1) {
-      index++;
-    } else {
+    // Se estiver no último slide, volta para o primeiro
+    if (index >= totalSlides - 1) {
       index = 0;
+    } else {
+      index++;
     }
     updateSlide();
   }
 
   function prevSlide() {
-    if (index > 0) {
-      index--;
-    } else {
+    // Se estiver no primeiro slide, vai para o último
+    if (index <= 0) {
       index = totalSlides - 1;
+    } else {
+      index--;
     }
     updateSlide();
   }
 
-  // Movimento automático (Passando devagar a cada 4 segundos)
-  setInterval(nextSlide, 4000);
+  // Movimento automático suave a cada 4 segundos
+  let autoRun = setInterval(nextSlide, 4000);
 
-  // Reajustar slider se a tela mudar de tamanho
+  // Reinicia o tempo automático quando o usuário clica manualmente
+  function resetTimer() {
+    clearInterval(autoRun);
+    autoRun = setInterval(nextSlide, 4000);
+  }
+
+  // Adiciona o reset aos botões
+  document.querySelectorAll('.arrow').forEach(btn => {
+    btn.addEventListener('click', resetTimer);
+  });
+
   window.addEventListener('resize', updateSlide);
 </script>
 
