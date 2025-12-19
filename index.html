@@ -21,23 +21,22 @@
       overflow-x: hidden;
     }
 
-    /* HEADER */
+    /* HEADER AJUSTADA */
     header {
-      position: fixed;
+      position: absolute; /* Não segue a rolagem */
       top: 0;
       width: 100%;
       background: #ffffff;
-      border-bottom: 4px solid #c60000;
-      padding: 15px 5%;
+      border-bottom: 3px solid #c60000;
+      padding: 10px 5%; /* Padding reduzido para ser menor */
       display: flex;
       justify-content: space-between;
       align-items: center;
       z-index: 1000;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
     .logo img {
-      height: 90px; /* Logo maior conforme solicitado */
+      height: 60px; /* Logo reduzida para uma header mais fina */
       width: auto;
       display: block;
     }
@@ -50,7 +49,7 @@
     nav a {
       text-decoration: none;
       color: #111;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 1px;
@@ -63,7 +62,7 @@
 
     /* SEÇÕES GERAIS */
     section {
-      padding: 160px 5% 100px; /* Padding reduzido nas laterais para as imagens expandirem */
+      padding: 120px 5% 80px; /* Ajuste do padding superior já que a header é menor */
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -90,15 +89,15 @@
     #portfolio { 
       background-color: #c60000; 
       color: #ffffff; 
-      padding-left: 2%; /* Aproxima as imagens do canto esquerdo */
-      padding-right: 2%; /* Aproxima as imagens do canto direito */
+      padding-left: 2%; 
+      padding-right: 2%; 
     }
     #portfolio h1 { color: #ffffff; padding-left: 3%; }
 
     #contato { background-color: #000000; color: #ffffff; }
     #contato h1 { color: #c60000; }
 
-    /* SLIDER (PORTFÓLIO) */
+    /* SLIDER */
     .slider-container {
       position: relative;
       width: 100%;
@@ -129,7 +128,6 @@
       display: block;
     }
 
-    /* SETAS */
     .arrow {
       position: absolute;
       top: 50%;
@@ -150,7 +148,6 @@
       transition: all 0.3s;
     }
 
-    .arrow:hover { background: #fff; transform: translateY(-50%) scale(1.1); }
     .arrow.left { left: 20px; }
     .arrow.right { right: 20px; }
 
@@ -163,7 +160,8 @@
     }
 
     @media (max-width: 768px) {
-      .logo img { height: 60px; }
+      .logo img { height: 50px; }
+      nav { gap: 15px; }
       h1 { font-size: 34px; }
       .card { min-width: 280px; height: 380px; }
     }
@@ -174,7 +172,7 @@
 
 <header>
   <div class="logo">
-    <img src="https://imgur.com/QNgMyug" alt="F360 Logo">
+    <img src="https://imgur.com/QNgMyug.png" alt="F360 Logo">
   </div>
 
   <nav>
@@ -233,7 +231,6 @@
   const totalSlides = cards.length;
   
   function getSlideWidth() {
-    // Calcula largura do card + o gap de 15px
     return cards[0].offsetWidth + 15; 
   }
 
@@ -243,7 +240,6 @@
   }
 
   function nextSlide() {
-    // Se estiver no último slide, volta para o primeiro
     if (index >= totalSlides - 1) {
       index = 0;
     } else {
@@ -253,7 +249,6 @@
   }
 
   function prevSlide() {
-    // Se estiver no primeiro slide, vai para o último
     if (index <= 0) {
       index = totalSlides - 1;
     } else {
@@ -262,16 +257,13 @@
     updateSlide();
   }
 
-  // Movimento automático suave a cada 4 segundos
   let autoRun = setInterval(nextSlide, 4000);
 
-  // Reinicia o tempo automático quando o usuário clica manualmente
   function resetTimer() {
     clearInterval(autoRun);
     autoRun = setInterval(nextSlide, 4000);
   }
 
-  // Adiciona o reset aos botões
   document.querySelectorAll('.arrow').forEach(btn => {
     btn.addEventListener('click', resetTimer);
   });
@@ -281,6 +273,3 @@
 
 </body>
 </html>
-
-
-
