@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <title>Portfólio • Social Media</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>F360 • Portfólio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
     }
 
     body {
-      background-color: #f5f7f8;
-      color: #0f2f2c;
+      background: #ffffff;
+      color: #111;
       scroll-behavior: smooth;
     }
 
@@ -26,40 +24,42 @@
       position: fixed;
       top: 0;
       width: 100%;
-      background: #0fa6a0;
+      background: #ffffff;
+      border-bottom: 2px solid #c60000;
+      padding: 16px 8%;
       display: flex;
-      justify-content: center;
-      gap: 40px;
-      padding: 14px 0;
+      justify-content: space-between;
+      align-items: center;
       z-index: 1000;
     }
 
-    header a {
-      color: #ffffff;
-      text-decoration: none;
-      font-size: 14px;
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      color: #c60000;
+    }
+
+    nav {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-      transition: opacity 0.2s;
+      gap: 24px;
     }
 
-    header a:hover {
-      opacity: 0.8;
+    nav a {
+      text-decoration: none;
+      color: #111;
+      font-size: 14px;
+      font-weight: bold;
     }
 
-    header span {
-      font-size: 12px;
-    }
-
+    /* SEÇÕES */
     section {
       padding: 120px 8% 100px;
       min-height: 100vh;
     }
 
-    h1, h2 {
-      margin-bottom: 24px;
+    h1 {
+      margin-bottom: 20px;
+      color: #c60000;
     }
 
     p {
@@ -70,135 +70,186 @@
 
     /* HISTÓRIA */
     #historia {
-      background: linear-gradient(135deg, #0fa6a0, #0b7f7a);
-      color: #ffffff;
-    }
-
-    #historia h1 {
-      font-size: 36px;
+      background: #ffffff;
     }
 
     /* PORTFÓLIO */
     #portfolio {
-      background-color: #ffffff;
-      overflow: hidden;
+      background: #f7f7f7;
     }
 
-    .slider {
+    .slider-container {
+      position: relative;
       margin-top: 40px;
       overflow: hidden;
-      position: relative;
     }
 
     .slider-track {
       display: flex;
-      width: calc(300px * 10);
-      animation: scroll 40s linear infinite;
+      gap: 24px;
+      transition: transform 0.5s ease;
     }
 
     .card {
-      width: 300px;
-      margin-right: 24px;
-      background: #e6f4f3;
-      border-radius: 12px;
+      min-width: 280px;
+      background: #ffffff;
+      border-radius: 10px;
       overflow: hidden;
-      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
 
     .card img {
       width: 100%;
-      height: auto;
       display: block;
     }
 
-    @keyframes scroll {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(-50%);
-      }
+    /* BOTÕES */
+    .controls {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .btn {
+      background: #c60000;
+      color: #ffffff;
+      border: none;
+      padding: 10px 16px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+
+    .btn:hover {
+      opacity: 0.85;
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #c60000;
+      color: #ffffff;
+      border: none;
+      font-size: 24px;
+      padding: 10px 14px;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+
+    .arrow.left {
+      left: 10px;
+    }
+
+    .arrow.right {
+      right: 10px;
     }
 
     /* CONTATO */
     #contato {
-      background-color: #0f2f2c;
-      color: #ffffff;
-    }
-
-    .contato-box {
-      max-width: 600px;
-      line-height: 1.8;
-      font-size: 15px;
+      background: #ffffff;
     }
 
     footer {
       margin-top: 40px;
-      font-size: 13px;
-      opacity: 0.8;
+      font-size: 14px;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <a href="#historia">🔝<span>Minha história</span></a>
-    <a href="#portfolio">🖼️<span>Portfólio</span></a>
-    <a href="#contato">✉️<span>Contato</span></a>
-  </header>
+<header>
+  <div class="logo">F360</div>
 
-  <!-- HISTÓRIA -->
-  <section id="historia">
-    <h1>Minha história</h1>
-    <p>
-      Trabalho há mais de 8 anos com gerenciamento de redes sociais, criando
-      conteúdos estratégicos, visuais e narrativas que fortalecem marcas e
-      conectam pessoas de forma autêntica.
-    </p>
-  </section>
+  <nav>
+    <a href="#historia">Minha história</a>
+    <a href="#portfolio">Portfólio</a>
+    <a href="#contato">Contato</a>
+  </nav>
+</header>
 
-  <!-- PORTFÓLIO -->
-  <section id="portfolio">
-    <h2>Portfólio</h2>
-    <p>Alguns exemplos de posts, ilustrações e peças gráficas.</p>
+<section id="historia">
+  <h1>Minha história</h1>
+  <p>
+    Atuo há mais de 8 anos com gerenciamento de redes sociais, criando estratégias,
+    conteúdos visuais e narrativas que fortalecem marcas e geram conexão real com o público.
+  </p>
+</section>
 
-    <div class="slider">
-      <div class="slider-track">
+<section id="portfolio">
+  <h1>Portfólio</h1>
 
-        <!-- IMAGENS (repita a sequência para efeito infinito) -->
-        <div class="card"><img src="imagens/post1.jpg" alt=""></div>
-        <div class="card"><img src="imagens/post2.jpg" alt=""></div>
-        <div class="card"><img src="imagens/post3.jpg" alt=""></div>
-        <div class="card"><img src="imagens/post4.jpg" alt=""></div>
-        <div class="card"><img src="imagens/post5.jpg" alt=""></div>
+  <div class="slider-container">
+    <button class="arrow left" onclick="prevSlide()">‹</button>
 
-        <!-- REPETIÇÃO -->
-        <div class="card"><img src="imagens/post1.jpg" alt=""></div>
-        <div class="card"><img src="imagens/post2.jpg" alt=""></div>
-        <div class="card"><img src="imagens/post3.jpg" alt=""></div>
-        <div class="card"><img src="imagens/post4.jpg" alt=""></div>
-        <div class="card"><img src="imagens/post5.jpg" alt=""></div>
-
-      </div>
+    <div class="slider-track" id="slider">
+      <div class="card"><img src="imagens/img1.jpg"></div>
+      <div class="card"><img src="imagens/img2.jpg"></div>
+      <div class="card"><img src="imagens/img3.jpg"></div>
+      <div class="card"><img src="imagens/img4.jpg"></div>
+      <div class="card"><img src="imagens/img5.jpg"></div>
+      <div class="card"><img src="imagens/img6.jpg"></div>
+      <div class="card"><img src="imagens/img7.jpg"></div>
+      <div class="card"><img src="imagens/img8.jpg"></div>
+      <div class="card"><img src="imagens/img9.jpg"></div>
     </div>
-  </section>
 
-  <!-- CONTATO -->
-  <section id="contato">
-    <h2>Contato</h2>
+    <button class="arrow right" onclick="nextSlide()">›</button>
+  </div>
 
-    <div class="contato-box">
-      <p>Email: contato@seudominio.com</p>
-      <p>WhatsApp: (00) 00000-0000</p>
-      <p>Instagram: @seuinstagram</p>
+  <div class="controls">
+    <button class="btn" onclick="toggleAuto()">⏸ Pausar / ▶️ Play</button>
+  </div>
+</section>
 
-      <footer>
-        <p>CNPJ: 00.000.000/0001-00</p>
-      </footer>
-    </div>
-  </section>
+<section id="contato">
+  <h1>Contato</h1>
+  <p>Email: contato@f360.com.br</p>
+  <p>WhatsApp: (00) 00000-0000</p>
+
+  <footer>
+    <p>CNPJ: 00.000.000/0001-00</p>
+  </footer>
+</section>
+
+<script>
+  const slider = document.getElementById('slider');
+  let index = 0;
+  let auto = true;
+
+  function updateSlide() {
+    slider.style.transform = `translateX(-${index * 304}px)`;
+  }
+
+  function nextSlide() {
+    if (index < slider.children.length - 1) {
+      index++;
+      updateSlide();
+    }
+  }
+
+  function prevSlide() {
+    if (index > 0) {
+      index--;
+      updateSlide();
+    }
+  }
+
+  function autoSlide() {
+    if (auto) {
+      index = (index + 1) % slider.children.length;
+      updateSlide();
+    }
+  }
+
+  function toggleAuto() {
+    auto = !auto;
+  }
+
+  setInterval(autoSlide, 3000);
+</script>
 
 </body>
 </html>
