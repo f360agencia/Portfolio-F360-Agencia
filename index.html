@@ -286,6 +286,7 @@
       <div class="card"><img src="https://imgur.com/qdnKCVw.png" alt="Produção F360 2"></div>
       <div class="card"><img src="https://imgur.com/dA8hJhr.png" alt="Produção F360 3"></div>
       <div class="card"><img src="https://imgur.com/rcJGAdB.png" alt="Produção F360 4"></div>
+      <div class="card"><img src="https://imgur.com/nVq8vVR.png" alt="Efeitos Especiais"></div>
     </div>
     <button class="arrow right" onclick="nextSlide()">›</button>
   </div>
@@ -334,8 +335,25 @@
 
   function getSlideWidth() { return cards[0].offsetWidth + 15; }
   function updateSlide() { slider.style.transform = `translateX(-${index * getSlideWidth()}px)`; }
-  function nextSlide() { index >= cards.length - 1 ? index = 0 : index++; updateSlide(); }
-  function prevSlide() { index <= 0 ? index = cards.length - 1 : index--; updateSlide(); }
+  
+  // Atualizado para reiniciar no item 8 (index 7) para evitar espaços vazios
+  function nextSlide() { 
+    if (index >= 7) { 
+      index = 0; 
+    } else { 
+      index++; 
+    }
+    updateSlide(); 
+  }
+  
+  function prevSlide() { 
+    if (index <= 0) { 
+      index = 7; 
+    } else { 
+      index--; 
+    }
+    updateSlide(); 
+  }
 
   let autoRun = setInterval(nextSlide, 4000);
 
