@@ -3,31 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Canton Fair - VaS Continuum</title>
+    <title>VaS Continuum - Canton Fair</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        /* CSS RESET E CORES */
+        /* TUDO O QUE É DESIGN (CSS) ESTÁ AQUI DENTRO AGORA */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --navy: #0a1a2f;
-            --gold: #b39359;
-            --white: #ffffff;
-            --gray: #f4f4f4;
-        }
-
+        
         body {
             font-family: 'Montserrat', sans-serif;
             line-height: 1.6;
             color: #333;
-            background-color: var(--white);
+            background-color: #ffffff;
         }
 
-        /* CABEÇALHO */
         header {
-            background-color: var(--navy);
+            background-color: #0a1a2f; /* Azul Marinho VaS */
             padding: 20px;
             color: white;
             text-align: center;
@@ -36,18 +29,10 @@
             z-index: 1000;
         }
 
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 14px;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
+        .gold { color: #b39359; } /* Dourado VaS */
 
-        /* HERO SECTION */
         .hero {
-            background: linear-gradient(rgba(10,26,47,0.8), rgba(10,26,47,0.8)), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1500');
+            background: linear-gradient(rgba(10,26,47,0.8), rgba(10,26,47,0.8)), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1500');
             background-size: cover;
             background-position: center;
             color: white;
@@ -57,14 +42,12 @@
 
         .hero h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 3rem;
+            font-size: 2.5rem;
             margin-bottom: 20px;
         }
 
-        .highlight { color: var(--gold); }
-
         .btn {
-            background-color: var(--gold);
+            background-color: #b39359;
             color: white;
             padding: 15px 30px;
             text-decoration: none;
@@ -74,7 +57,6 @@
             border-radius: 4px;
         }
 
-        /* SEÇÕES */
         .container {
             max-width: 1100px;
             margin: auto;
@@ -83,132 +65,80 @@
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
             margin-top: 40px;
         }
 
         .card {
-            background: var(--gray);
+            background: #f4f4f4;
             padding: 30px;
-            border-top: 5px solid var(--gold);
+            border-top: 5px solid #b39359;
             text-align: center;
         }
 
-        .card i {
-            font-size: 40px;
-            color: var(--gold);
-            margin-bottom: 15px;
-        }
-
-        /* TABELA */
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
         }
 
-        th { background: var(--navy); color: var(--gold); padding: 15px; }
-        td { border: 1px solid #ddd; padding: 15px; text-align: left; }
+        th { background: #0a1a2f; color: #b39359; padding: 15px; }
+        td { border: 1px solid #ddd; padding: 15px; }
 
-        /* FORMULÁRIO */
-        .form-container {
-            background: var(--navy);
-            color: white;
-            padding: 40px;
-            margin-top: 40px;
+        form {
+            background: #0a1a2f;
+            padding: 30px;
             border-radius: 8px;
+            color: white;
         }
 
         input, textarea {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             margin: 10px 0;
             border: none;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
-            .nav-links { display: none; }
+            border-radius: 4px;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="nav-links">
-            <a href="#">Início</a>
-            <a href="#programa">O Programa</a>
-            <a href="#contato">Contato</a>
-        </div>
-        <h2 style="margin-top:10px">VaS <span class="highlight">CONTINUUM</span></h2>
+        <h2>VaS <span class="gold">CONTINUUM</span></h2>
     </header>
 
     <section class="hero">
-        <p style="color:var(--gold); font-weight:bold;">139ª EDIÇÃO | EXCLUSIVO</p>
-        <h1>DESBLOQUEIE O <span class="highlight">SUCESSO GLOBAL</span></h1>
+        <h1>DESBLOQUEIE O <span class="gold">SUCESSO GLOBAL</span></h1>
         <p>Sua Imersão Estratégica na CANTON FAIR com a VaS Continuum!</p>
         <a href="#contato" class="btn">QUERO SABER MAIS!</a>
     </section>
 
     <div class="container">
-        <h2 style="text-align:center; font-family:'Playfair Display'; font-size: 2.5rem;">Descubra a Força da Canton Fair</h2>
+        <h2 style="text-align:center; font-family:'Playfair Display';">Por que escolher a VaS?</h2>
         <div class="grid">
             <div class="card">
-                <i class="fas fa-globe"></i>
-                <h3>Maior do Mundo</h3>
-                <p>Explore mais de 1 milhão de m² de pura inovação e negócios.</p>
+                <i class="fas fa-briefcase fa-2x gold"></i>
+                <h3>Buying Trip</h3>
+                <p>Foco 100% profissional e comercial para o seu negócio.</p>
             </div>
             <div class="card">
-                <i class="fas fa-handshake"></i>
-                <h3>Networking</h3>
-                <p>Conecte-se com fornecedores líderes globais diretamente.</p>
-            </div>
-            <div class="card">
-                <i class="fas fa-chart-line"></i>
-                <h3>Tendências</h3>
-                <p>Saia na frente da concorrência com produtos inéditos.</p>
+                <i class="fas fa-user-tie fa-2x gold"></i>
+                <h3>Mentoria</h3>
+                <p>Experiência real com Marcelo Nogueira (Tok&Stok, GPA).</p>
             </div>
         </div>
     </div>
 
-    <section id="programa" style="background-color: var(--gray);">
-        <div class="container">
-            <h2 style="text-align:center; margin-bottom:30px;">Cronograma Estratégico</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Dia</th>
-                        <th>Atividade</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>Dia 1</td><td>Briefing e Jantar de Boas-vindas</td></tr>
-                    <tr><td>Dia 2-4</td><td>Imersão Guiada na Feira</td></tr>
-                    <tr><td>Dia 5</td><td>Visita a Escritório de Sourcing</td></tr>
-                    <tr><td>Dia 6</td><td>Mentoria de Importação</td></tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
-
     <section id="contato" class="container">
-        <div class="form-container">
-            <h2 style="color:var(--gold); text-align:center;">Garanta sua Vaga</h2>
-            <p style="text-align:center; margin-bottom:20px;">Vagas limitadas para garantir a qualidade da mentoria.</p>
-            <form>
-                <input type="text" placeholder="Seu Nome">
-                <input type="email" placeholder="Seu E-mail Profissional">
-                <input type="text" placeholder="Sua Empresa">
-                <textarea rows="4" placeholder="Como podemos ajudar seu negócio?"></textarea>
-                <button type="button" class="btn" style="width:100%; border:none; cursor:pointer;">ENVIAR INTERESSE</button>
-            </form>
-        </div>
+        <form>
+            <h2 style="text-align:center; color:#b39359;">Garanta sua Vaga</h2>
+            <input type="text" placeholder="Nome">
+            <input type="email" placeholder="E-mail Profissional">
+            <textarea rows="4" placeholder="Sua mensagem"></textarea>
+            <button type="button" class="btn" style="width:100%; border:none; cursor:pointer;">ENVIAR</button>
+        </form>
     </section>
-
-    <footer style="text-align:center; padding: 40px; background: #050d18; color: white;">
-        <p>&copy; 2024 VaS Continuum - Todos os direitos reservados.</p>
-    </footer>
 
 </body>
 </html>
