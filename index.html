@@ -1,416 +1,518 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>F360 • Portfólio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    }
-
-    body {
-      background: #ffffff;
-      color: #111;
-      scroll-behavior: smooth;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    /* HEADER ORIGINAL */
-    header {
-      position: absolute;
-      top: 0;
-      width: 100%;
-      background: #ffffff;
-      border-bottom: 3px solid #c60000;
-      padding: 10px 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 1000;
-    }
-
-    .logo img { height: 80px; width: auto; display: block; }
-
-    nav { display: flex; gap: 35px; }
-    nav a {
-      text-decoration: none;
-      color: #111;
-      font-size: 13px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      transition: color 0.3s;
-    }
-    nav a:hover { color: #c60000; }
-
-    /* SEÇÕES GERAIS */
-    section {
-      padding: 140px 5% 80px;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      position: relative;
-    }
-
-    h1 {
-      margin-bottom: 40px;
-      font-size: 48px;
-      text-transform: uppercase;
-      font-weight: 900;
-      position: relative;
-      z-index: 2;
-    }
-
-    /* SEÇÃO HISTÓRIA */
-    #historia { 
-      background-color: #0f0f0f;
-      color: #ffffff; 
-      overflow: hidden;
-      position: relative;
-    }
-
-    .mosaic-container {
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      z-index: 1; opacity: 0.15;
-      display: flex; 
-      flex-direction: column; 
-      justify-content: space-between;
-      pointer-events: none;
-      padding: 20px 0;
-    }
-
-    .scroll-row {
-      display: flex;
-      width: calc(415px * 20); 
-      animation: scrollLeft 60s linear infinite;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desbloqueie o Sucesso Global: Canton Fair com VaS Continuum</title>
     
-    .scroll-row.reverse { 
-      animation: scrollRight 65s linear infinite; 
-    }
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    .scroll-row img { 
-      width: 400px;
-      height: 280px;
-      object-fit: cover; 
-      margin-right: 15px; 
-      border-radius: 6px; 
-      filter: grayscale(30%);
-    }
+    <style>
+        /* PALETA DE CORES VaS SOLUÇÕES */
+        :root {
+            --navy: #0a1a2f;       /* Azul Escuro Profundo */
+            --gold: #b39359;       /* Dourado/Ocre Corporativo */
+            --gold-hover: #967a46;
+            --white: #ffffff;
+            --light-gray: #f4f7f9;
+            --text-main: #333333;
+            --text-muted: #666666;
+        }
 
-    @keyframes scrollLeft { 
-      100% { transform: translateX(calc(-415px * 10)); } 
-    }
-    @keyframes scrollRight { 
-      0% { transform: translateX(calc(-415px * 10)); } 
-      100% { transform: translateX(0); } 
-    }
+        /* RESET E BASE */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-    #historia .content { position: relative; z-index: 2; max-width: 900px; }
-    #historia p { 
-      font-size: 24px; 
-      margin-bottom: 40px; 
-      text-shadow: 2px 2px 15px rgba(0,0,0,0.9); 
-      font-weight: 400;
-    }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .section-padding { padding: 80px 0; }
+        .bg-navy { background-color: var(--navy); }
+        .bg-light { background-color: var(--light-gray); }
+        .text-white { color: var(--white); }
+        .text-center { text-align: center; }
+        .mt-40 { margin-top: 40px; }
+        .mt-50 { margin-top: 50px; }
+        .mb-40 { margin-bottom: 40px; }
 
-    /* SEÇÃO PORTFÓLIO */
-    #portfolio { background-color: #c60000; color: #ffffff; padding-left: 2%; padding-right: 2%; }
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px; margin-top: 60px; padding: 0 3%;
-    }
-    .portfolio-grid .card { min-width: unset; height: 400px; }
+        /* TÍTULOS E TIPOGRAFIA */
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        .title-decor {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            position: relative;
+        }
+        .title-decor.gold { color: var(--gold); }
+        .highlight { color: var(--gold); font-weight: 700; }
+        
+        /* NAVBAR */
+        .navbar {
+            background: var(--navy);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        .header-flex { display: flex; justify-content: space-between; align-items: center; }
+        .logo img { height: 45px; display: block; }
+        .nav-menu ul { display: flex; list-style: none; }
+        .nav-menu a { color: var(--white); text-decoration: none; padding: 10px 15px; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; transition: 0.3s; }
+        .nav-menu a:hover { color: var(--gold); }
+        
+        .btn-gold-nav { 
+            background: var(--gold); color: white; padding: 10px 20px; 
+            text-decoration: none; border-radius: 2px; font-weight: bold; font-size: 0.75rem;
+            transition: 0.3s;
+        }
+        .mobile-menu-icon { color: white; font-size: 1.5rem; background: none; border: none; display: none; cursor: pointer; }
 
-    /* SLIDER */
-    .slider-container { position: relative; width: 100%; overflow: hidden; padding: 30px 0; z-index: 2; }
-    .slider-track { display: flex; gap: 15px; transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
-    .card {
-      min-width: 350px; height: 450px; background: #000; border-radius: 4px;
-      overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.4); cursor: pointer; transition: transform 0.3s ease;
-    }
-    .card:hover { transform: scale(1.03); }
-    .card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(rgba(10, 26, 47, 0.85), rgba(10, 26, 47, 0.85)), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=2070');
+            background-size: cover;
+            background-position: center;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: left;
+        }
+        .hero h1 { font-size: 3.2rem; line-height: 1.2; margin-bottom: 25px; font-weight: 900; }
+        .hero p { font-size: 1.2rem; max-width: 800px; margin-bottom: 35px; font-weight: 300; }
+        .top-tag { color: var(--gold); text-transform: uppercase; letter-spacing: 2px; font-weight: 700; font-size: 0.9rem; display: block; margin-bottom: 10px; }
 
-    .arrow {
-      position: absolute; top: 50%; transform: translateY(-50%);
-      background: rgba(255, 255, 255, 0.9); color: #c60000; border: none;
-      font-size: 35px; width: 60px; height: 60px; cursor: pointer; border-radius: 50%;
-      z-index: 10; display: flex; align-items: center; justify-content: center;
-    }
-    .arrow.left { left: 20px; }
-    .arrow.right { right: 20px; }
+        .btn-gold {
+            background: var(--gold);
+            color: white;
+            padding: 18px 40px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            border: none;
+        }
+        .btn-gold:hover { background: var(--gold-hover); transform: translateY(-2px); }
 
-    /* WHATSAPP FLUTUANTE */
-    .whatsapp-btn {
-      position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
-      background-color: #25d366; color: white; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 2px 2px 15px rgba(0,0,0,0.3); z-index: 2500;
-      text-decoration: none; transition: 0.3s;
-    }
-    .whatsapp-btn:hover { transform: scale(1.1); }
-    .whatsapp-btn svg { width: 35px; height: 35px; fill: white; }
+        /* GRIDS E CARDS */
+        .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; margin-top: 50px; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
 
-    /* MODAL */
-    .modal {
-      display: none; position: fixed; z-index: 3000; top: 0; left: 0; width: 100%; height: 100%;
-      background-color: rgba(0, 0, 0, 0.95); backdrop-filter: blur(8px);
-      justify-content: center; align-items: center; flex-direction: column;
-    }
-    .modal-content { max-width: 90%; max-height: 80vh; border: 3px solid #c60000; animation: zoomIn 0.4s ease; }
-    #caption { color: #fff; margin-top: 20px; font-size: 24px; font-weight: 700; text-transform: uppercase; text-align: center; }
-    .close { position: absolute; top: 30px; right: 40px; color: #fff; font-size: 50px; cursor: pointer; }
+        .card-feature { 
+            background: white; padding: 40px 30px; 
+            border-top: 5px solid var(--gold); 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+        .card-feature:hover { transform: translateY(-10px); }
+        .card-feature i { font-size: 2.5rem; color: var(--gold); margin-bottom: 20px; display: block; }
+        .card-feature h3 { margin-bottom: 15px; font-size: 1.4rem; color: var(--navy); }
 
-    @keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        /* USP (Diferenciais) */
+        .usp-box { display: flex; gap: 20px; background: rgba(255,255,255,0.05); padding: 25px; border-radius: 4px; }
+        .usp-box i { color: var(--gold); font-size: 1.8rem; }
+        .usp-box h3 { color: var(--gold); margin-bottom: 10px; font-size: 1.3rem; }
 
-    /* CONTATO */
-    #contato { background-color: #000000; color: #ffffff; }
-    #contato h1 { color: #c60000; }
-    .contact-item { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; font-size: 18px; }
-    .contact-item svg { width: 24px; height: 24px; fill: #c60000; }
-    .phone-link { color: #ffffff; text-decoration: none; transition: 0.3s; }
-    footer { margin-top: 80px; padding-top: 30px; border-top: 1px solid #333; color: #888; }
+        /* TABELA */
+        .table-responsive { overflow-x: auto; margin-top: 40px; }
+        .program-table { width: 100%; border-collapse: collapse; background: white; min-width: 600px; }
+        .program-table th { background: var(--navy); color: var(--gold); padding: 20px; text-align: left; text-transform: uppercase; font-size: 0.8rem; }
+        .program-table td { padding: 20px; border-bottom: 1px solid #eee; font-size: 0.95rem; }
+        .program-table tr:nth-child(even) { background: #fafafa; }
 
-    @media (max-width: 768px) {
-      header { padding: 15px 5%; height: auto; }
-      .logo img { height: 50px; }
-      nav { gap: 15px; }
-      nav a { font-size: 10px; letter-spacing: 0; }
-      h1 { font-size: 32px; margin-bottom: 25px; }
-      section { padding: 100px 8% 60px; }
-      #historia p { font-size: 18px; line-height: 1.4; }
-      .scroll-row img { width: 300px; height: 200px; }
-      .scroll-row { width: calc(315px * 20); }
-      @keyframes scrollLeft { 100% { transform: translateX(calc(-315px * 10)); } }
-      .card { min-width: 280px; height: 380px; }
-      .slider-container { padding: 10px 0; }
-      .arrow { width: 45px; height: 45px; font-size: 25px; }
-      .portfolio-grid { grid-template-columns: 1fr; margin-top: 30px; }
-      .portfolio-grid .card { height: 300px; }
-      .whatsapp-btn { width: 50px; height: 50px; bottom: 20px; right: 20px; }
-      .phone-link { color: #888888; }
-    }
-  </style>
+        /* RESULTADOS */
+        .result-card { background: white; padding: 30px; border-left: 4px solid var(--gold); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .result-card h3 { font-size: 1.2rem; color: var(--navy); margin-bottom: 10px; }
+
+        /* TESTEMUNHOS */
+        .testimonials { background: var(--navy); padding: 50px; color: white; border-radius: 8px; position: relative; }
+        .testimonial-item { margin-bottom: 30px; font-style: italic; font-size: 1.1rem; }
+        .testimonial-item span { display: block; margin-top: 15px; color: var(--gold); font-style: normal; font-weight: bold; }
+
+        /* CATEGORIAS */
+        .cat-item { margin-bottom: 30px; padding: 20px; border: 1px solid rgba(179, 147, 89, 0.3); }
+        .cat-item h4 { color: var(--gold); font-size: 1.3rem; margin-bottom: 10px; }
+        .cat-item ul { list-style: none; padding-left: 0; }
+        .cat-item ul li { margin-bottom: 8px; font-size: 0.9rem; }
+
+        /* MENTOR */
+        .grid-mentor { display: grid; grid-template-columns: 400px 1fr; gap: 60px; align-items: center; }
+        .mentor-img img { width: 100%; border-radius: 4px; box-shadow: 20px 20px 0 var(--gold); }
+        .mentor-text ul { list-style: none; margin: 20px 0; }
+        .mentor-text ul li { margin-bottom: 10px; display: flex; align-items: flex-start; gap: 10px; }
+        .mentor-text ul li i { color: var(--gold); margin-top: 5px; }
+
+        /* FORMULÁRIO */
+        .form-container { max-width: 800px; margin: 0 auto; background: white; padding: 50px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
+        .vas-form input, .vas-form textarea {
+            width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #ddd; font-family: inherit;
+        }
+        .checkbox-group { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 20px; font-size: 0.85rem; }
+        .checkbox-group input { width: auto; margin-top: 4px; }
+
+        /* FOOTER */
+        .footer { background: #050d18; color: white; padding: 60px 0 20px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer h3 { color: var(--gold); font-size: 1.1rem; margin-bottom: 20px; text-transform: uppercase; }
+        .footer ul { list-style: none; }
+        .footer ul li { margin-bottom: 10px; }
+        .footer ul a { color: #ccc; text-decoration: none; font-size: 0.9rem; }
+        .footer-bottom { border-top: 1px solid #1a2635; padding-top: 20px; font-size: 0.8rem; color: #777; }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 992px) {
+            .grid-mentor { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.5rem; }
+            .mobile-menu-icon { display: block; }
+            .nav-menu { display: none; }
+        }
+    </style>
 </head>
-
 <body>
 
-<header>
-  <div class="logo">
-    <img src="https://imgur.com/hyer8Fw.png" alt="F360 Logo">
-  </div>
-  <nav>
-    <a href="#historia">Minha história</a>
-    <a href="#portfolio">Portfólio</a>
-    <a href="#contato">Contato</a>
-  </nav>
-</header>
+    <header class="navbar">
+        <div class="container header-flex">
+            <div class="logo">
+                <img src="https://via.placeholder.com/180x50/0a1a2f/b39359?text=VaS+CONTINUUM" alt="VaS Continuum">
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#hero">Início</a></li>
+                    <li><a href="#about-canton-fair">A Canton Fair</a></li>
+                    <li><a href="#why-vas">Por Que a VaS?</a></li>
+                    <li><a href="#program">O Programa</a></li>
+                    <li><a href="#categories">Categorias</a></li>
+                    <li><a href="#mentor">Seu Mentor</a></li>
+                </ul>
+            </nav>
+            <a href="#contact" class="btn-gold-nav">GARANTA SUA VAGA AGORA!</a>
+            <button class="mobile-menu-icon"><i class="fas fa-bars"></i></button>
+        </div>
+    </header>
 
-<a href="https://wa.me/5511989582222" class="whatsapp-btn" target="_blank">
-  <svg viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93a7.898 7.898 0 0 0-2.327-5.594l.008-.008zm-5.604 12.004h-.003a6.56 6.56 0 0 1-3.344-.915l-.24-.144-2.487.652.665-2.422-.158-.251a6.56 6.56 0 0 1-1.007-3.411c0-3.621 2.951-6.572 6.574-6.572 1.756 0 3.406.683 4.645 1.923a6.516 6.516 0 0 1 1.923 4.646c-.002 3.623-2.952 6.574-6.573 6.574z"/></svg>
-</a>
+    <main>
+        <section id="hero" class="hero">
+            <div class="container">
+                <span class="top-tag">139ª EDIÇÃO | Acompanhamento Exclusivo</span>
+                <h1>DESBLOQUEIE O SUCESSO GLOBAL: <br><span class="highlight">Sua Imersão Estratégica na CANTON FAIR com a VaS Continuum!</span></h1>
+                <p>Transforme sua visão em produtos de sucesso e diferencie seu varejo com acesso exclusivo e mentoria especializada na maior feira de negócios do mundo. <strong>Esta não é uma viagem; é a alavanca para o seu próximo nível.</strong></p>
+                <div class="hero-btns">
+                    <a href="#why-vas" class="btn-gold">QUERO SABER MAIS!</a>
+                </div>
+            </div>
+        </section>
 
-<section id="historia">
-  <div class="mosaic-container">
-    <div class="scroll-row">
-      <img src="https://imgur.com/ovzQOFI.png"> <img src="https://imgur.com/uYUjTzb.png">
-      <img src="https://imgur.com/KM27uUk.png"> <img src="https://imgur.com/KriwRPM.png">
-      <img src="https://imgur.com/OZRDQRN.png"> <img src="https://imgur.com/dWKBXKy.png">
-      <img src="https://imgur.com/qdnKCVw.png"> <img src="https://imgur.com/dA8hJhr.png">
-      <img src="https://imgur.com/rcJGAdB.png"> <img src="https://imgur.com/nVq8vVR.png">
-      <img src="https://imgur.com/ovzQOFI.png"> <img src="https://imgur.com/uYUjTzb.png">
-      <img src="https://imgur.com/KM27uUk.png"> <img src="https://imgur.com/KriwRPM.png">
-      <img src="https://imgur.com/OZRDQRN.png"> <img src="https://imgur.com/dWKBXKy.png">
-      <img src="https://imgur.com/qdnKCVw.png"> <img src="https://imgur.com/dA8hJhr.png">
-      <img src="https://imgur.com/rcJGAdB.png"> <img src="https://imgur.com/nVq8vVR.png">
-    </div>
-    <div class="scroll-row reverse">
-      <img src="https://imgur.com/OZRDQRN.png"> <img src="https://imgur.com/dWKBXKy.png">
-      <img src="https://imgur.com/qdnKCVw.png"> <img src="https://imgur.com/dA8hJhr.png">
-      <img src="https://imgur.com/rcJGAdB.png"> <img src="https://imgur.com/nVq8vVR.png">
-      <img src="https://imgur.com/ovzQOFI.png"> <img src="https://imgur.com/uYUjTzb.png">
-      <img src="https://imgur.com/KM27uUk.png"> <img src="https://imgur.com/KriwRPM.png">
-      <img src="https://imgur.com/OZRDQRN.png"> <img src="https://imgur.com/dWKBXKy.png">
-      <img src="https://imgur.com/qdnKCVw.png"> <img src="https://imgur.com/dA8hJhr.png">
-      <img src="https://imgur.com/rcJGAdB.png"> <img src="https://imgur.com/nVq8vVR.png">
-      <img src="https://imgur.com/ovzQOFI.png"> <img src="https://imgur.com/uYUjTzb.png">
-      <img src="https://imgur.com/KM27uUk.png"> <img src="https://imgur.com/KriwRPM.png">
-    </div>
-    <div class="scroll-row">
-      <img src="https://imgur.com/qdnKCVw.png"> <img src="https://imgur.com/rcJGAdB.png">
-      <img src="https://imgur.com/ovzQOFI.png"> <img src="https://imgur.com/KM27uUk.png">
-      <img src="https://imgur.com/OZRDQRN.png"> <img src="https://imgur.com/nVq8vVR.png">
-      <img src="https://imgur.com/dA8hJhr.png"> <img src="https://imgur.com/uYUjTzb.png">
-      <img src="https://imgur.com/dWKBXKy.png"> <img src="https://imgur.com/KriwRPM.png">
-      <img src="https://imgur.com/qdnKCVw.png"> <img src="https://imgur.com/rcJGAdB.png">
-      <img src="https://imgur.com/ovzQOFI.png"> <img src="https://imgur.com/KM27uUk.png">
-      <img src="https://imgur.com/OZRDQRN.png"> <img src="https://imgur.com/nVq8vVR.png">
-      <img src="https://imgur.com/dA8hJhr.png"> <img src="https://imgur.com/uYUjTzb.png">
-      <img src="https://imgur.com/dWKBXKy.png"> <img src="https://imgur.com/KriwRPM.png">
-    </div>
-  </div>
+        <section id="about-canton-fair" class="section-padding">
+            <div class="container text-center">
+                <h2 class="title-decor">Descubra a Força Transformadora da Canton Fair</h2>
+                <p style="max-width: 900px; margin: 0 auto;">Bem-vindo ao palco onde o futuro do comércio global é moldado. A Canton Fair, também conhecida como Feira de Cantão, não é apenas um evento; é uma instituição com <strong class="highlight">décadas de história</strong>, consolidada como a mais prestigiada e influente feira de negócios do mundo. Realizada bianualmente em Guangzhou, China, e dividida em três fases estratégicas, ela é a porta de entrada para um universo de inovação, parcerias e oportunidades sem precedentes.</p>
+                
+                <div class="grid-4">
+                    <div class="card-feature">
+                        <i class="fas fa-globe-americas"></i>
+                        <h3>Maior Feira do Mundo</h3>
+                        <p>Explore 1,18 milhão de metros quadrados de exposição, reunindo compradores de mais de 200 países.</p>
+                    </div>
+                    <div class="card-feature">
+                        <i class="fas fa-calendar-alt"></i>
+                        <h3>Oportunidade Duas Vezes ao Ano</h3>
+                        <p>Edições de Primavera e Outono, garantindo que você esteja sempre à frente das tendências.</p>
+                    </div>
+                    <div class="card-feature">
+                        <i class="fas fa-layer-group"></i>
+                        <h3>Três Fases Especializadas</h3>
+                        <p>Mergulhe profundamente nas categorias de produtos mais relevantes para o seu negócio.</p>
+                    </div>
+                    <div class="card-feature">
+                        <i class="fas fa-trophy"></i>
+                        <h3>139ª Edição Histórica</h3>
+                        <p>Faça parte de uma história de sucesso e testemunhe as inovações que definirão o mercado.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <div class="content">
-    <h1>Minha história</h1>
-    <p>
-      Após 8 anos de experiência com redes sociais, decidi criar a F360: uma agência que reúne 
-      tudo o que aprendi ao longo dessa trajetória, um espaço onde posso aplicar meu próprio método 
-      e deixar meu traço em cada projeto. A F360 integra desde a gestão de interações, relatórios e 
-      métricas de engajamento até a criação de conteúdo digital, geração de insights estratégicos 
-      e gestão de crises.
-    </p>
-    <p>
-      Hoje trabalho principalmente com o Photoshop, criando ilustrações avançadas e montagens especializadas para redes sociais.
-    </p>
-  </div>
-</section>
+        <section id="why-vas" class="section-padding bg-navy text-white">
+            <div class="container">
+                <div class="text-center mb-40">
+                    <h2 class="title-decor gold">A Diferença VaS Continuum: Sua Vantagem Competitiva.</h2>
+                    <p style="max-width: 800px; margin: 0 auto;">Navegar pela imensidão da Canton Fair pode ser desafiador. Mas e se você pudesse ter uma bússola, um guia experiente e um <strong class="highlight">acesso privilegiado</strong> que transformasse uma viagem de negócios em uma jornada de resultados tangíveis? É exatamente isso que a expedição "Buying Trip VaS Continuum" oferece.</p>
+                </div>
 
-<section id="portfolio">
-  <h1>Portfólio</h1>
-  <div class="slider-container">
-    <button class="arrow left" onclick="prevSlide()">‹</button>
-    <div class="slider-track" id="slider">
-      <div class="card"><img src="https://imgur.com/ovzQOFI.png" alt="Jornais e Posts Informativos"></div>
-      <div class="card"><img src="https://imgur.com/uYUjTzb.png" alt="Desenvolvimento de sites e Branding"></div>
-      <div class="card"><img src="https://imgur.com/KM27uUk.png" alt="Mockups Interativos"></div>
-      <div class="card"><img src="https://imgur.com/KriwRPM.png" alt="Campanhas Digitais"></div>
-      <div class="card"><img src="https://imgur.com/OZRDQRN.png" alt="Flyers"></div>
-      <div class="card"><img src="https://imgur.com/dWKBXKy.png" alt="Produção F360 1"></div>
-      <div class="card"><img src="https://imgur.com/qdnKCVw.png" alt="Produção F360 2"></div>
-      <div class="card"><img src="https://imgur.com/dA8hJhr.png" alt="Produção F360 3"></div>
-      <div class="card"><img src="https://imgur.com/rcJGAdB.png" alt="Produção F360 4"></div>
-      <div class="card"><img src="https://imgur.com/nVq8vVR.png" alt="Efeitos Especiais"></div>
-      <div class="card"><img src="https://imgur.com/pGQ8NkF.png" alt="Projeto F360 - 5"></div>
-      <div class="card"><img src="https://imgur.com/xAfbXaY.png" alt="Projeto F360 - 6"></div>
-      <div class="card"><img src="https://imgur.com/swQdgcT.png" alt="Projeto F360 - 7"></div>
-      <div class="card"><img src="https://imgur.com/aKkPbqo.png" alt="Projeto F360 - 8"></div>
-      <div class="card"><img src="https://imgur.com/qT1SrVg.png" alt="Projeto F360 - 9"></div>
-    </div>
-    <button class="arrow right" onclick="nextSlide()">›</button>
-  </div>
+                <div class="grid-2">
+                    <div class="usp-box">
+                        <i class="fas fa-briefcase"></i>
+                        <div>
+                            <h3>Não é Turismo, é uma 'Buying Trip' Profissional</h3>
+                            <p>Nosso foco é 100% no seu negócio. Serão dias dedicados à prospecção, negociação e desenvolvimento de produtos que farão a diferença. Esqueça preocupações logísticas.</p>
+                        </div>
+                    </div>
+                    <div class="usp-box">
+                        <i class="fas fa-user-tie"></i>
+                        <div>
+                            <h3>Mentoria Exclusiva de um Especialista</h3>
+                            <p>Acompanhamento próximo de Marcelo Nogueira, CEO da VaS Continuum, com mais de 20 anos de experiência em importação para gigantes do varejo.</p>
+                        </div>
+                    </div>
+                    <div class="usp-box">
+                        <i class="fas fa-handshake"></i>
+                        <div>
+                            <h3>Acesso VIP ao Sourcing Global</h3>
+                            <p>Seremos recebidos diretamente por escritórios de sourcing de alta performance que operam para os "big retailers" globais. Expertise real na palma da mão.</p>
+                        </div>
+                    </div>
+                    <div class="usp-box">
+                        <i class="fas fa-users"></i>
+                        <div>
+                            <h3>Grupo Reduzido e Focado</h3>
+                            <p>Garantimos um ambiente colaborativo e focado. Qualidade supera quantidade; as discussões são profundas e a mentoria personalizada.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-50">
+                    <a href="#results" class="btn-gold">QUERO DESCOBRIR MEUS RESULTADOS!</a>
+                </div>
+            </div>
+        </section>
 
-  <h1 style="margin-top: 80px;">Galeria Completa</h1>
-  <div class="portfolio-grid">
-    <div class="card"><img src="https://imgur.com/ovzQOFI.png" alt="Design Editorial"></div>
-    <div class="card"><img src="https://imgur.com/uYUjTzb.png" alt="Interface Web"></div>
-    <div class="card"><img src="https://imgur.com/KM27uUk.png" alt="Mockups"></div>
-    <div class="card"><img src="https://imgur.com/nVq8vVR.png" alt="Efeitos Especiais"></div>
-    <div class="card"><img src="https://imgur.com/KriwRPM.png" alt="Campanha Digital"></div>
-    <div class="card"><img src="https://imgur.com/OZRDQRN.png" alt="Flyer Design"></div>
-    <div class="card"><img src="https://imgur.com/dWKBXKy.png" alt="Arte F360 A"></div>
-    <div class="card"><img src="https://imgur.com/qdnKCVw.png" alt="Arte F360 B"></div>
-    <div class="card"><img src="https://imgur.com/dA8hJhr.png" alt="Arte F360 C"></div>
-    <div class="card"><img src="https://imgur.com/rcJGAdB.png" alt="Arte F360 D"></div>
-    <div class="card"><img src="https://imgur.com/pGQ8NkF.png" alt="Arte F360 E"></div>
-    <div class="card"><img src="https://imgur.com/xAfbXaY.png" alt="Arte F360 F"></div>
-    <div class="card"><img src="https://imgur.com/swQdgcT.png" alt="Arte F360 G"></div>
-    <div class="card"><img src="https://imgur.com/aKkPbqo.png" alt="Arte F360 H"></div>
-    <div class="card"><img src="https://imgur.com/qT1SrVg.png" alt="Arte F360 I"></div>
-  </div>
-</section>
+        <section id="program" class="section-padding bg-light">
+            <div class="container">
+                <div class="text-center mb-40">
+                    <h2 class="title-decor">O Programa da Viagem: Sua Jornada</h2>
+                    <p>A "Buying Trip VaS Continuum" foi meticulosamente planejada para maximizar seu tempo e garantir o máximo retorno para o seu investimento.</p>
+                </div>
 
-<div id="imageModal" class="modal">
-  <span class="close" onclick="closeModal()">&times;</span>
-  <img class="modal-content" id="imgExpanded">
-  <div id="caption"></div>
-</div>
+                <div class="table-responsive">
+                    <table class="program-table">
+                        <thead>
+                            <tr>
+                                <th>Dia</th>
+                                <th>Atividade Principal</th>
+                                <th>Foco</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Dia 1</strong></td>
+                                <td>Chegada e Briefing Estratégico</td>
+                                <td>Alinhamento de objetivos, panorama da feira e Jantar de networking.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Dia 2-4</strong></td>
+                                <td>Imersão na Canton Fair (Fase 2)</td>
+                                <td>Exploração guiada, identificação de fornecedores, análise de tendências e negociações.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Dia 5</strong></td>
+                                <td>Visita ao Escritório de Sourcing Exclusivo</td>
+                                <td>Reuniões com especialistas, discussões sobre logística, controle de qualidade e cadeia.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Dia 6</strong></td>
+                                <td>Sessões de Mentoria e Consolidação</td>
+                                <td>Análise de produtos, planejamento de próximos passos e estratégias de importação.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Dia 7</strong></td>
+                                <td>Retorno</td>
+                                <td>Partida com um plano de ação robusto e novas parcerias.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-center mt-40" style="font-weight: 600; color: var(--navy);">Cada passo é cuidadosamente orquestrado para que você desenvolva produtos que farão uma diferença competitiva.</p>
+            </div>
+        </section>
 
-<section id="contato">
-  <h1>Contato</h1>
-  <div class="contact-item">
-    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-    <span><strong>Email:</strong> felipeszoke@f360agencia.com.br</span>
-  </div>
-  <div class="contact-item">
-    <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.81 9.81 0 0 0 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.39-4.19-1.15l-.3-.17-3.12.82.83-3.04-.2-.32a8.188 8.188 0 0 1-1.26-4.38c.01-4.54 3.7-8.24 8.25-8.24zM8.53 7.33c-.16 0-.43.06-.66.31-.22.25-.87.86-.87 2.07 0 1.22.89 2.39 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.23-.16-.48-.28-.25-.13-1.47-.73-1.7-.81-.23-.08-.39-.12-.56.13-.17.25-.64.81-.78.98-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.74-.66-1.24-1.48-1.39-1.73-.14-.25-.01-.39.11-.51.12-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.85-.2-.48-.4-.41-.56-.41z"/></svg>
-    <span><strong>WhatsApp:</strong> <a href="https://wa.me/5511989582222" class="phone-link">(11) 98958-2222</a></span>
-  </div>
-  <footer>
-    <p>CNPJ: 63.805.706/0001-40</p>
-    <p>&copy; F360 2025. Todos os direitos reservados.</p>
-  </footer>
-</section>
+        <section id="results" class="section-padding">
+            <div class="container">
+                <div class="text-center mb-40">
+                    <h2 class="title-decor">O Que Você Vai Conquistar?</h2>
+                    <p>Esta expedição não é apenas uma viagem; é um investimento direto no futuro e na lucratividade do seu negócio.</p>
+                </div>
 
-<script>
-  const slider = document.getElementById('slider');
-  let index = 0;
-  let direction = 1; // 1 para frente, -1 para trás
-  const cards = document.querySelectorAll('.slider-track .card');
-  const totalItems = cards.length;
+                <div class="grid-3">
+                    <div class="result-card">
+                        <h3><i class="fas fa-lightbulb highlight"></i> Portfólio Inovador</h3>
+                        <p>Descubra e desenvolva produtos que ninguém mais tem, elevando seu patamar de competitividade.</p>
+                    </div>
+                    <div class="result-card">
+                        <h3><i class="fas fa-money-bill-wave highlight"></i> Otimização de Custos</h3>
+                        <p>Aprenda a negociar diretamente com fabricantes e melhore suas margens de lucro significativamente.</p>
+                    </div>
+                    <div class="result-card">
+                        <h3><i class="fas fa-warehouse highlight"></i> Rede Confiável</h3>
+                        <p>Construa relacionamentos sólidos com fornecedores qualificados e auditados.</p>
+                    </div>
+                    <div class="result-card">
+                        <h3><i class="fas fa-truck-loading highlight"></i> Conhecimento Prático</h3>
+                        <p>Insights valiosos sobre todo o processo de importação, do desenvolvimento à entrega final.</p>
+                    </div>
+                    <div class="result-card">
+                        <h3><i class="fas fa-chart-line highlight"></i> Tendências Globais</h3>
+                        <p>Antecipe as próximas "ondas" do mercado, posicionando seu negócio à frente da concorrência.</p>
+                    </div>
+                    <div class="result-card">
+                        <h3><i class="fas fa-network-wired highlight"></i> Networking de Alto Nível</h3>
+                        <p>Conecte-se com outros empresários visionários e amplie sua rede profissional.</p>
+                    </div>
+                </div>
 
-  function getSlideWidth() { 
-    return cards[0].offsetWidth + 15; 
-  }
+                <div class="testimonials mt-50">
+                    <h3 class="text-center gold mb-40">O que nossos participantes dizem:</h3>
+                    <div class="testimonial-item">
+                        <p>"Antes da VaS Continuum, a Canton Fair era um labirinto. Com Marcelo, encontrei os fornecedores certos e lancei uma linha de produtos que transformou meu faturamento!"</p>
+                        <span>- João Silva, CEO da Varejo Inovador</span>
+                    </div>
+                    <div class="testimonial-item">
+                        <p>"O acesso ao escritório de sourcing foi um game-changer. É como ter um departamento de importação global na palma da mão, com todo o suporte necessário."</p>
+                        <span>- Maria Santos, Diretora de Compras, Atacado Solução</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  function updateSlide() { 
-    slider.style.transform = `translateX(-${index * getSlideWidth()}px)`; 
-  }
+        <section id="categories" class="section-padding bg-navy text-white">
+            <div class="container">
+                <div class="text-center mb-40">
+                    <h2 class="title-decor gold">Categorias Exploradas: 2ª Fase</h2>
+                    <p>Focada em produtos "Better Life" que enriquecem o dia a dia, a decoração e o lazer.</p>
+                </div>
 
-  function nextSlide() {
-    // Se estiver indo para frente (1) e chegar na última imagem, inverte a direção
-    if (direction === 1 && index >= totalItems - 1) {
-      direction = -1;
-    } 
-    // Se estiver voltando (-1) e chegar na primeira imagem, inverte para frente
-    else if (direction === -1 && index <= 0) {
-      direction = 1;
-    }
+                <div class="grid-2">
+                    <div class="cat-item">
+                        <h4>1. Consumer Goods (Bens de Consumo)</h4>
+                        <ul>
+                            <li><strong>Itens Domésticos:</strong> Cozinha, Limpeza, Organização, Jardinagem.</li>
+                            <li><strong>Festas e Feriados:</strong> Ornamentos, Presentes, Natal.</li>
+                            <li><strong>Decoração:</strong> Vasos, Quadros, Velas, Relógios.</li>
+                        </ul>
+                    </div>
+                    <div class="cat-item">
+                        <h4>2. Gifts & Premiums (Presentes e Brindes)</h4>
+                        <ul>
+                            <li><strong>Brindes:</strong> Promocionais, Corporativos, Papelaria.</li>
+                            <li><strong>Brinquedos:</strong> Educativos, STEM, Eletrônicos, Pelúcia.</li>
+                            <li><strong>Cerâmica Artística:</strong> Vasos e Estátuas decorativas.</li>
+                        </ul>
+                    </div>
+                    <div class="cat-item">
+                        <h4>3. Home, Furniture & Garden</h4>
+                        <ul>
+                            <li><strong>Móveis:</strong> Áreas externas, Rattan, Ferro, Madeira.</li>
+                            <li><strong>Lazer:</strong> Churrasqueiras, Barracas, Guarda-sóis.</li>
+                        </ul>
+                    </div>
+                    <div class="cat-item">
+                        <h4>4. Personal Care & Bathroom</h4>
+                        <ul>
+                            <li><strong>Banheiro:</strong> Gabinetes, Espelhos, Conjuntos.</li>
+                            <li><strong>Cuidados Pessoais:</strong> Escovas, Secadores, Acessórios.</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="text-center mt-40">Com a curadoria da VaS Continuum, você terá a clareza para encontrar exatamente o que seu mercado procura.</p>
+            </div>
+        </section>
 
-    index += direction;
-    updateSlide();
-  }
+        <section id="mentor" class="section-padding">
+            <div class="container grid-mentor">
+                <div class="mentor-img">
+                    <img src="https://via.placeholder.com/400x500?text=Marcelo+Nogueira" alt="Marcelo Nogueira">
+                </div>
+                <div class="mentor-text">
+                    <h2 class="title-decor">Marcelo Nogueira: Seu Guia Rumo à Excelência</h2>
+                    <p>Marcelo Nogueira, CEO e fundador da VaS Continuum, é um estrategista de produto e importação com mais de duas décadas de carreira. Atuou em posições de liderança desenvolvendo cadeias de suprimentos para marcas icônicas.</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> <strong>Tok&Stok:</strong> Curadoria e desenvolvimento de produtos de tendência.</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>GPA e Casino Group:</strong> Sourcing em escala massiva para grandes volumes.</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Tania Bulhões:</strong> Design e qualidade no segmento de luxo.</li>
+                    </ul>
+                    <p>Sua vivência oferece uma compreensão 360 graus do ecossistema de sourcing global. Marcelo compartilhará táticas de negociação e segredos para transformar a prospecção em motor de crescimento.</p>
+                </div>
+            </div>
+        </section>
 
-  function prevSlide() {
-    // Lógica manual da seta esquerda: força voltar 1
-    if (index > 0) {
-      index--;
-      updateSlide();
-    } else {
-      // Se estiver no início, pula para o fim e inverte direção
-      index = totalItems - 1;
-      direction = -1;
-      updateSlide();
-    }
-  }
+        <section id="contact" class="section-padding bg-light">
+            <div class="container">
+                <div class="form-container">
+                    <h2 class="title-decor text-center">Aja Agora: Vagas Limitadas!</h2>
+                    <p class="text-center mb-40">Não deixe para depois o que pode revolucionar seu sortimento e sua margem de lucro.</p>
+                    
+                    <form class="vas-form">
+                        <input type="text" placeholder="Nome Completo" required>
+                        <input type="email" placeholder="E-mail Profissional" required>
+                        <input type="tel" placeholder="Telefone (WhatsApp)" required>
+                        <input type="text" placeholder="Nome da Empresa" required>
+                        <input type="text" placeholder="Segmento de Atuação" required>
+                        <textarea placeholder="Mensagem (Quais categorias de produtos mais te interessam?)" rows="5"></textarea>
+                        
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="consent" required>
+                            <label for="consent">Aceito receber comunicações da VaS Continuum sobre esta e futuras expedições.</label>
+                        </div>
+                        
+                        <button type="submit" class="btn-gold block">QUERO MINHA VAGA E TRANSFORMAR MEU NEGÓCIO!</button>
+                    </form>
 
-  // A função nextSlide agora é inteligente: ela sabe se deve somar ou subtrair
-  let autoRun = setInterval(nextSlide, 4000);
+                    <div class="text-center mt-40">
+                        <p style="font-size: 0.9rem;">Prefere falar conosco? <br>WhatsApp: <strong>(11) 99999-9999</strong> | contato@vascontinuum.com.br</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-  const modal = document.getElementById("imageModal");
-  const modalImg = document.getElementById("imgExpanded");
-  const captionText = document.getElementById("caption");
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <img src="https://via.placeholder.com/150x40/050d18/b39359?text=VaS+Logo" alt="VaS Logo" style="margin-bottom:20px">
+                    <p style="font-size: 0.8rem; color: #777;">Estratégia e Sourcing Global para o varejo de alta performance.</p>
+                </div>
+                <div>
+                    <h3>Links</h3>
+                    <ul>
+                        <li><a href="#hero">Início</a></li>
+                        <li><a href="#about-canton-fair">A Canton Fair</a></li>
+                        <li><a href="#contact">Contato</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Social</h3>
+                    <ul>
+                        <li><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom text-center">
+                <p>&copy; 2024 VaS Continuum. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
 
-  document.querySelectorAll('.card').forEach(card => {
-    card.addEventListener('click', function() {
-      const img = this.querySelector('img');
-      modal.style.display = "flex";
-      modalImg.src = img.src;
-      captionText.innerHTML = img.alt;
-      clearInterval(autoRun);
-    });
-  });
-
-  function closeModal() { 
-    modal.style.display = "none"; 
-    autoRun = setInterval(nextSlide, 4000);
-  }
-
-  window.onclick = (e) => { if (e.target == modal) closeModal(); }
-  
-  window.addEventListener('resize', updateSlide);
-</script>
-
+    <script>
+        // Funcionalidade básica de menu mobile
+        const menuIcon = document.querySelector('.mobile-menu-icon');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        menuIcon.addEventListener('click', () => {
+            navMenu.style.display = navMenu.style.display === 'block' ? 'none' : 'block';
+            navMenu.style.position = 'absolute';
+            navMenu.style.top = '70px';
+            navMenu.style.left = '0';
+            navMenu.style.width = '100%';
+            navMenu.style.background = '#0a1a2f';
+        });
+    </script>
 </body>
 </html>
-
-
