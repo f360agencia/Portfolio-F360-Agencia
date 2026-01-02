@@ -1,144 +1,411 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VaS Continuum - Canton Fair</title>
+  <meta charset="UTF-8">
+  <title>F360 • Portfólio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background: #ffffff;
+      color: #111;
+      scroll-behavior: smooth;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* HEADER ORIGINAL */
+    header {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      background: #ffffff;
+      border-bottom: 3px solid #c60000;
+      padding: 10px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .logo img { height: 80px; width: auto; display: block; }
+
+    nav { display: flex; gap: 35px; }
+    nav a {
+      text-decoration: none;
+      color: #111;
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: color 0.3s;
+    }
+    nav a:hover { color: #c60000; }
+
+    /* SEÇÕES GERAIS */
+    section {
+      padding: 140px 5% 80px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+    }
+
+    h1 {
+      margin-bottom: 40px;
+      font-size: 48px;
+      text-transform: uppercase;
+      font-weight: 900;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* SEÇÃO HISTÓRIA */
+    #historia { 
+      background-color: #0f0f0f;
+      color: #ffffff; 
+      overflow: hidden;
+      position: relative;
+    }
+
+    .mosaic-container {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      z-index: 1; opacity: 0.15;
+      display: flex; 
+      flex-direction: column; 
+      justify-content: space-between;
+      pointer-events: none;
+      padding: 20px 0;
+    }
+
+    .scroll-row {
+      display: flex;
+      width: calc(415px * 20); 
+      animation: scrollLeft 60s linear infinite;
+    }
     
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    .scroll-row.reverse { 
+      animation: scrollRight 65s linear infinite; 
+    }
 
-    <style>
-        /* TUDO O QUE É DESIGN (CSS) ESTÁ AQUI DENTRO AGORA */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            font-family: 'Montserrat', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #ffffff;
-        }
+    .scroll-row img { 
+      width: 400px;
+      height: 280px;
+      object-fit: cover; 
+      margin-right: 15px; 
+      border-radius: 6px; 
+      filter: grayscale(30%);
+    }
 
-        header {
-            background-color: #0a1a2f; /* Azul Marinho VaS */
-            padding: 20px;
-            color: white;
-            text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+    @keyframes scrollLeft { 
+      100% { transform: translateX(calc(-415px * 10)); } 
+    }
+    @keyframes scrollRight { 
+      0% { transform: translateX(calc(-415px * 10)); } 
+      100% { transform: translateX(0); } 
+    }
 
-        .gold { color: #b39359; } /* Dourado VaS */
+    #historia .content { position: relative; z-index: 2; max-width: 900px; }
+    #historia p { 
+      font-size: 24px; 
+      margin-bottom: 40px; 
+      text-shadow: 2px 2px 15px rgba(0,0,0,0.9); 
+      font-weight: 400;
+    }
 
-        .hero {
-            background: linear-gradient(rgba(10,26,47,0.8), rgba(10,26,47,0.8)), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1500');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 100px 20px;
-            text-align: center;
-        }
+    /* SEÇÃO PORTFÓLIO */
+    #portfolio { background-color: #c60000; color: #ffffff; padding-left: 2%; padding-right: 2%; }
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px; margin-top: 60px; padding: 0 3%;
+    }
+    .portfolio-grid .card { min-width: unset; height: 400px; }
 
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
+    /* SLIDER */
+    .slider-container { position: relative; width: 100%; overflow: hidden; padding: 30px 0; z-index: 2; }
+    .slider-track { display: flex; gap: 15px; transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
+    .card {
+      min-width: 350px; height: 450px; background: #000; border-radius: 4px;
+      overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.4); cursor: pointer; transition: transform 0.3s ease;
+    }
+    .card:hover { transform: scale(1.03); }
+    .card img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-        .btn {
-            background-color: #b39359;
-            color: white;
-            padding: 15px 30px;
-            text-decoration: none;
-            font-weight: bold;
-            display: inline-block;
-            margin-top: 20px;
-            border-radius: 4px;
-        }
+    .arrow {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.9); color: #c60000; border: none;
+      font-size: 35px; width: 60px; height: 60px; cursor: pointer; border-radius: 50%;
+      z-index: 10; display: flex; align-items: center; justify-content: center;
+    }
+    .arrow.left { left: 20px; }
+    .arrow.right { right: 20px; }
 
-        .container {
-            max-width: 1100px;
-            margin: auto;
-            padding: 60px 20px;
-        }
+    /* WHATSAPP FLUTUANTE */
+    .whatsapp-btn {
+      position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
+      background-color: #25d366; color: white; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 2px 2px 15px rgba(0,0,0,0.3); z-index: 2500;
+      text-decoration: none; transition: 0.3s;
+    }
+    .whatsapp-btn:hover { transform: scale(1.1); }
+    .whatsapp-btn svg { width: 35px; height: 35px; fill: white; }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 40px;
-        }
+    /* MODAL */
+    .modal {
+      display: none; position: fixed; z-index: 3000; top: 0; left: 0; width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.95); backdrop-filter: blur(8px);
+      justify-content: center; align-items: center; flex-direction: column;
+    }
+    .modal-content { max-width: 90%; max-height: 80vh; border: 3px solid #c60000; animation: zoomIn 0.4s ease; }
+    #caption { color: #fff; margin-top: 20px; font-size: 24px; font-weight: 700; text-transform: uppercase; text-align: center; }
+    .close { position: absolute; top: 30px; right: 40px; color: #fff; font-size: 50px; cursor: pointer; }
 
-        .card {
-            background: #f4f4f4;
-            padding: 30px;
-            border-top: 5px solid #b39359;
-            text-align: center;
-        }
+    @keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
+    /* CONTATO */
+    #contato { background-color: #000000; color: #ffffff; }
+    #contato h1 { color: #c60000; }
+    .contact-item { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; font-size: 18px; }
+    .contact-item svg { width: 24px; height: 24px; fill: #c60000; }
+    .phone-link { color: #ffffff; text-decoration: none; transition: 0.3s; }
+    footer { margin-top: 80px; padding-top: 30px; border-top: 1px solid #333; color: #888; }
 
-        th { background: #0a1a2f; color: #b39359; padding: 15px; }
-        td { border: 1px solid #ddd; padding: 15px; }
-
-        form {
-            background: #0a1a2f;
-            padding: 30px;
-            border-radius: 8px;
-            color: white;
-        }
-
-        input, textarea {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            border: none;
-            border-radius: 4px;
-        }
-    </style>
+    @media (max-width: 768px) {
+      header { padding: 15px 5%; height: auto; }
+      .logo img { height: 50px; }
+      nav { gap: 15px; }
+      nav a { font-size: 10px; letter-spacing: 0; }
+      h1 { font-size: 32px; margin-bottom: 25px; }
+      section { padding: 100px 8% 60px; }
+      #historia p { font-size: 18px; line-height: 1.4; }
+      .scroll-row img { width: 300px; height: 200px; }
+      .scroll-row { width: calc(315px * 20); }
+      @keyframes scrollLeft { 100% { transform: translateX(calc(-315px * 10)); } }
+      .card { min-width: 280px; height: 380px; }
+      .slider-container { padding: 10px 0; }
+      .arrow { width: 45px; height: 45px; font-size: 25px; }
+      .portfolio-grid { grid-template-columns: 1fr; margin-top: 30px; }
+      .portfolio-grid .card { height: 300px; }
+      .whatsapp-btn { width: 50px; height: 50px; bottom: 20px; right: 20px; }
+      .phone-link { color: #888888; }
+    }
+  </style>
 </head>
+
 <body>
 
-    <header>
-        <h2>VaS <span class="gold">CONTINUUM</span></h2>
-    </header>
+<header>
+  <div class="logo">
+    <img src="https://imgur.com/hyer8Fw.png" alt="F360 Logo">
+  </div>
+  <nav>
+    <a href="#historia">Minha história</a>
+    <a href="#portfolio">Portfólio</a>
+    <a href="#contato">Contato</a>
+  </nav>
+</header>
 
-    <section class="hero">
-        <h1>DESBLOQUEIE O <span class="gold">SUCESSO GLOBAL</span></h1>
-        <p>Sua Imersão Estratégica na CANTON FAIR com a VaS Continuum!</p>
-        <a href="#contato" class="btn">QUERO SABER MAIS!</a>
-    </section>
+<a href="https://wa.me/5511989582222" class="whatsapp-btn" target="_blank">
+  <svg viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93a7.898 7.898 0 0 0-2.327-5.594l.008-.008zm-5.604 12.004h-.003a6.56 6.56 0 0 1-3.344-.915l-.24-.144-2.487.652.665-2.422-.158-.251a6.56 6.56 0 0 1-1.007-3.411c0-3.621 2.951-6.572 6.574-6.572 1.756 0 3.406.683 4.645 1.923a6.516 6.516 0 0 1 1.923 4.646c-.002 3.623-2.952 6.574-6.573 6.574z"/></svg>
+</a>
 
-    <div class="container">
-        <h2 style="text-align:center; font-family:'Playfair Display';">Por que escolher a VaS?</h2>
-        <div class="grid">
-            <div class="card">
-                <i class="fas fa-briefcase fa-2x gold"></i>
-                <h3>Buying Trip</h3>
-                <p>Foco 100% profissional e comercial para o seu negócio.</p>
-            </div>
-            <div class="card">
-                <i class="fas fa-user-tie fa-2x gold"></i>
-                <h3>Mentoria</h3>
-                <p>Experiência real com Marcelo Nogueira (Tok&Stok, GPA).</p>
-            </div>
-        </div>
+<section id="historia">
+  <div class="mosaic-container">
+    <div class="scroll-row">
+      <img src="https://imgur.com/ovzQOFI.png"> <img src="https://imgur.com/uYUjTzb.png">
+      <img src="https://imgur.com/KM27uUk.png"> <img src="https://imgur.com/KriwRPM.png">
+      <img src="https://imgur.com/OZRDQRN.png"> <img src="https://imgur.com/dWKBXKy.png">
+      <img src="https://imgur.com/qdnKCVw.png"> <img src="https://imgur.com/dA8hJhr.png">
+      <img src="https://imgur.com/rcJGAdB.png"> <img src="https://imgur.com/nVq8vVR.png">
+      <img src="https://imgur.com/ovzQOFI.png"> <img src="https://imgur.com/uYUjTzb.png">
+      <img src="https://imgur.com/KM27uUk.png"> <img src="https://imgur.com/KriwRPM.png">
+      <img src="https://imgur.com/OZRDQRN.png"> <img src="https://imgur.com/dWKBXKy.png">
+      <img src="https://imgur.com/qdnKCVw.png"> <img src="https://imgur.com/dA8hJhr.png">
+      <img src="https://imgur.com/rcJGAdB.png"> <img src="https://imgur.com/nVq8vVR.png">
     </div>
+    <div class="scroll-row reverse">
+      <img src="https://imgur.com/OZRDQRN.png"> <img src="https://imgur.com/dWKBXKy.png">
+      <img src="https://imgur.com/qdnKCVw.png"> <img src="https://imgur.com/dA8hJhr.png">
+      <img src="https://imgur.com/rcJGAdB.png"> <img src="https://imgur.com/nVq8vVR.png">
+      <img src="https://imgur.com/ovzQOFI.png"> <img src="https://imgur.com/uYUjTzb.png">
+      <img src="https://imgur.com/KM27uUk.png"> <img src="https://imgur.com/KriwRPM.png">
+      <img src="https://imgur.com/OZRDQRN.png"> <img src="https://imgur.com/dWKBXKy.png">
+      <img src="https://imgur.com/qdnKCVw.png"> <img src="https://imgur.com/dA8hJhr.png">
+      <img src="https://imgur.com/rcJGAdB.png"> <img src="https://imgur.com/nVq8vVR.png">
+      <img src="https://imgur.com/ovzQOFI.png"> <img src="https://imgur.com/uYUjTzb.png">
+      <img src="https://imgur.com/KM27uUk.png"> <img src="https://imgur.com/KriwRPM.png">
+    </div>
+    <div class="scroll-row">
+      <img src="https://imgur.com/qdnKCVw.png"> <img src="https://imgur.com/rcJGAdB.png">
+      <img src="https://imgur.com/ovzQOFI.png"> <img src="https://imgur.com/KM27uUk.png">
+      <img src="https://imgur.com/OZRDQRN.png"> <img src="https://imgur.com/nVq8vVR.png">
+      <img src="https://imgur.com/dA8hJhr.png"> <img src="https://imgur.com/uYUjTzb.png">
+      <img src="https://imgur.com/dWKBXKy.png"> <img src="https://imgur.com/KriwRPM.png">
+      <img src="https://imgur.com/qdnKCVw.png"> <img src="https://imgur.com/rcJGAdB.png">
+      <img src="https://imgur.com/ovzQOFI.png"> <img src="https://imgur.com/KM27uUk.png">
+      <img src="https://imgur.com/OZRDQRN.png"> <img src="https://imgur.com/nVq8vVR.png">
+      <img src="https://imgur.com/dA8hJhr.png"> <img src="https://imgur.com/uYUjTzb.png">
+      <img src="https://imgur.com/dWKBXKy.png"> <img src="https://imgur.com/KriwRPM.png">
+    </div>
+  </div>
 
-    <section id="contato" class="container">
-        <form>
-            <h2 style="text-align:center; color:#b39359;">Garanta sua Vaga</h2>
-            <input type="text" placeholder="Nome">
-            <input type="email" placeholder="E-mail Profissional">
-            <textarea rows="4" placeholder="Sua mensagem"></textarea>
-            <button type="button" class="btn" style="width:100%; border:none; cursor:pointer;">ENVIAR</button>
-        </form>
-    </section>
+  <div class="content">
+    <h1>Minha história</h1>
+    <p>
+      Mais de 8 anos de experiência com a gestão de redes sociais e comunidade, desde o manejo de interações, 
+      reports e métricas de engajamento à criação de conteúdo digital, insights estratégico e gestão de crises.
+    </p>
+    <p>
+      Hoje trabalho principalmente com o Photoshop, criando ilustrações avançadas e montagens especializadas para redes sociais.
+    </p>
+  </div>
+</section>
+
+<section id="portfolio">
+  <h1>Portfólio</h1>
+  <div class="slider-container">
+    <button class="arrow left" onclick="prevSlide()">‹</button>
+    <div class="slider-track" id="slider">
+      <div class="card"><img src="https://imgur.com/ovzQOFI.png" alt="Jornais e Posts Informativos"></div>
+      <div class="card"><img src="https://imgur.com/uYUjTzb.png" alt="Desenvolvimento de sites e Branding"></div>
+      <div class="card"><img src="https://imgur.com/KM27uUk.png" alt="Mockups Interativos"></div>
+      <div class="card"><img src="https://imgur.com/KriwRPM.png" alt="Campanhas Digitais"></div>
+      <div class="card"><img src="https://imgur.com/OZRDQRN.png" alt="Flyers"></div>
+      <div class="card"><img src="https://imgur.com/dWKBXKy.png" alt="Produção F360 1"></div>
+      <div class="card"><img src="https://imgur.com/qdnKCVw.png" alt="Produção F360 2"></div>
+      <div class="card"><img src="https://imgur.com/dA8hJhr.png" alt="Produção F360 3"></div>
+      <div class="card"><img src="https://imgur.com/rcJGAdB.png" alt="Produção F360 4"></div>
+      <div class="card"><img src="https://imgur.com/nVq8vVR.png" alt="Efeitos Especiais"></div>
+      <div class="card"><img src="https://imgur.com/pGQ8NkF.png" alt="Projeto F360 - 5"></div>
+      <div class="card"><img src="https://imgur.com/xAfbXaY.png" alt="Projeto F360 - 6"></div>
+      <div class="card"><img src="https://imgur.com/swQdgcT.png" alt="Projeto F360 - 7"></div>
+      <div class="card"><img src="https://imgur.com/aKkPbqo.png" alt="Projeto F360 - 8"></div>
+      <div class="card"><img src="https://imgur.com/qT1SrVg.png" alt="Projeto F360 - 9"></div>
+    </div>
+    <button class="arrow right" onclick="nextSlide()">›</button>
+  </div>
+
+  <h1 style="margin-top: 80px;">Galeria Completa</h1>
+  <div class="portfolio-grid">
+    <div class="card"><img src="https://imgur.com/ovzQOFI.png" alt="Design Editorial"></div>
+    <div class="card"><img src="https://imgur.com/uYUjTzb.png" alt="Interface Web"></div>
+    <div class="card"><img src="https://imgur.com/KM27uUk.png" alt="Mockups"></div>
+    <div class="card"><img src="https://imgur.com/nVq8vVR.png" alt="Efeitos Especiais"></div>
+    <div class="card"><img src="https://imgur.com/KriwRPM.png" alt="Campanha Digital"></div>
+    <div class="card"><img src="https://imgur.com/OZRDQRN.png" alt="Flyer Design"></div>
+    <div class="card"><img src="https://imgur.com/dWKBXKy.png" alt="Arte F360 A"></div>
+    <div class="card"><img src="https://imgur.com/qdnKCVw.png" alt="Arte F360 B"></div>
+    <div class="card"><img src="https://imgur.com/dA8hJhr.png" alt="Arte F360 C"></div>
+    <div class="card"><img src="https://imgur.com/rcJGAdB.png" alt="Arte F360 D"></div>
+    <div class="card"><img src="https://imgur.com/pGQ8NkF.png" alt="Arte F360 E"></div>
+    <div class="card"><img src="https://imgur.com/xAfbXaY.png" alt="Arte F360 F"></div>
+    <div class="card"><img src="https://imgur.com/swQdgcT.png" alt="Arte F360 G"></div>
+    <div class="card"><img src="https://imgur.com/aKkPbqo.png" alt="Arte F360 H"></div>
+    <div class="card"><img src="https://imgur.com/qT1SrVg.png" alt="Arte F360 I"></div>
+  </div>
+</section>
+
+<div id="imageModal" class="modal">
+  <span class="close" onclick="closeModal()">&times;</span>
+  <img class="modal-content" id="imgExpanded">
+  <div id="caption"></div>
+</div>
+
+<section id="contato">
+  <h1>Contato</h1>
+  <div class="contact-item">
+    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+    <span><strong>Email:</strong> felipeszoke@f360agencia.com.br</span>
+  </div>
+  <div class="contact-item">
+    <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.81 9.81 0 0 0 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.39-4.19-1.15l-.3-.17-3.12.82.83-3.04-.2-.32a8.188 8.188 0 0 1-1.26-4.38c.01-4.54 3.7-8.24 8.25-8.24zM8.53 7.33c-.16 0-.43.06-.66.31-.22.25-.87.86-.87 2.07 0 1.22.89 2.39 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.23-.16-.48-.28-.25-.13-1.47-.73-1.7-.81-.23-.08-.39-.12-.56.13-.17.25-.64.81-.78.98-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.74-.66-1.24-1.48-1.39-1.73-.14-.25-.01-.39.11-.51.12-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.85-.2-.48-.4-.41-.56-.41z"/></svg>
+    <span><strong>WhatsApp:</strong> <a href="https://wa.me/5511989582222" class="phone-link">(11) 98958-2222</a></span>
+  </div>
+  <footer>
+    <p>CNPJ: 63.805.706/0001-40</p>
+    <p>&copy; F360 2025. Todos os direitos reservados.</p>
+  </footer>
+</section>
+
+<script>
+  const slider = document.getElementById('slider');
+  let index = 0;
+  let direction = 1; // 1 para frente, -1 para trás
+  const cards = document.querySelectorAll('.slider-track .card');
+  const totalItems = cards.length;
+
+  function getSlideWidth() { 
+    return cards[0].offsetWidth + 15; 
+  }
+
+  function updateSlide() { 
+    slider.style.transform = `translateX(-${index * getSlideWidth()}px)`; 
+  }
+
+  function nextSlide() {
+    // Se estiver indo para frente (1) e chegar na última imagem, inverte a direção
+    if (direction === 1 && index >= totalItems - 1) {
+      direction = -1;
+    } 
+    // Se estiver voltando (-1) e chegar na primeira imagem, inverte para frente
+    else if (direction === -1 && index <= 0) {
+      direction = 1;
+    }
+
+    index += direction;
+    updateSlide();
+  }
+
+  function prevSlide() {
+    // Lógica manual da seta esquerda: força voltar 1
+    if (index > 0) {
+      index--;
+      updateSlide();
+    } else {
+      // Se estiver no início, pula para o fim e inverte direção
+      index = totalItems - 1;
+      direction = -1;
+      updateSlide();
+    }
+  }
+
+  // A função nextSlide agora é inteligente: ela sabe se deve somar ou subtrair
+  let autoRun = setInterval(nextSlide, 4000);
+
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("imgExpanded");
+  const captionText = document.getElementById("caption");
+
+  document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('click', function() {
+      const img = this.querySelector('img');
+      modal.style.display = "flex";
+      modalImg.src = img.src;
+      captionText.innerHTML = img.alt;
+      clearInterval(autoRun);
+    });
+  });
+
+  function closeModal() { 
+    modal.style.display = "none"; 
+    autoRun = setInterval(nextSlide, 4000);
+  }
+
+  window.onclick = (e) => { if (e.target == modal) closeModal(); }
+  
+  window.addEventListener('resize', updateSlide);
+</script>
 
 </body>
 </html>
